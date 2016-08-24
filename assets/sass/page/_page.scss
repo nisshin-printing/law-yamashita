@@ -1,0 +1,27 @@
+// セミナー資料リスト
+.seminar-list {
+	@include clearfix;
+	&:hover {
+		@extend .b-shadow-1;
+	}
+	.card-img {
+		margin: 0 auto;
+		@include breakpoint( medium ) {
+			float: left;
+			margin-right: 1rem;
+		}
+		img {
+			max-width: 210px;
+			margin: 0 auto;
+		}
+	}
+	.seminar-content {
+		padding: 0 1rem;
+	}
+	h3 {
+		@extend .mt1;
+	}
+	p {
+		margin-bottom: 10px;
+	}
+}
