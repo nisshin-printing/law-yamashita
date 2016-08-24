@@ -1,0 +1,77 @@
+$jiko_id  : '2915';
+$rikon_id : '2916';
+$sozoku_id: '2917';
+$kabarai_id : '2918';
+$E-hiroshima_id : '3674';
+.layout-lp {
+	margin: 0 auto;
+	.title-block {
+		padding: 3rem 0;
+		border: {
+			top: 1px solid $black;
+			bottom: 1px solid $black;
+		}
+		@extend .mb3;
+		@extend .text-center;
+	}
+	h2 {
+		margin: 1rem auto;
+	}
+	h4 {
+		background-color: #FFCE9E;
+		border-radius: $global-radius;
+		@extend .mb1;
+		@extend .p1;
+	}
+	section { padding: rem-calc(80 0); }
+	.voices {
+		.accordion-title {
+			@extend h4;
+			font-family: $noto-font;
+			text-decoration: none;
+		}
+	}
+	.cta-lp {
+		.button {
+			font-size: 120%;
+		}
+	}
+}
+.header-lp {
+	.sub-nav {
+		@include clearfix();
+		dt,
+		a {
+			@extend .color-white;
+		}
+		.active {
+			@extend .bg-white;
+			border-radius: $global-radius;
+		}
+	}
+}
+.js-countup {
+	font-size: 3rem;
+	vertical-align: bottom;
+	margin: 1rem 1rem -1rem;
+	display: inline-block;
+}
+.content-header {
+	@extend .mt2;
+	@extend .mb2;
+	.caution {
+		position: relative;
+		@extend .mt3;
+		h3 {
+			position: absolute;
+			display: inline-block;
+			top: -20px;
+			left: 20%;
+			padding: 0.5rem 1rem;
+		}
+		p {
+			@extend .p5;
+			display: inline-block;
+		}
+	}
+}

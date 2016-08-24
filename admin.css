@@ -1,0 +1,13 @@
+@charset "UTF-8";
+/**
+ Theme Name: Ringo+ for Law-Yamashita
+ Theme URI: http://dtdsh.com/
+ Author URI: http://dtdsh.com/
+ Description: Ringo+ for Law-Yamashita about Wordpress Theme
+ Author: Kazuki Fukuda
+ Version: 1.2.0
+ License: Themeforest Regular License
+ License URI: license.txt
+ Tags: two-columns,responsive-layout,editor-style,custom-menu
+**/
+@import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css);@-webkit-keyframes sns-hover{0%{padding:0;margin:10px;background:0 0}100%{padding:10px;margin:0;background:rgba(0,0,0,.1)}}@keyframes sns-hover{0%{padding:0;margin:10px;background:0 0}100%{padding:10px;margin:0;background:rgba(0,0,0,.1)}}@-webkit-keyframes right-dn{0%{left:-100%;height:0}50%{left:0;height:0}100%{left:0;height:100%}}@keyframes right-dn{0%{left:-100%;height:0}50%{left:0;height:0}100%{left:0;height:100%}}@-webkit-keyframes left-up{0%{left:100%;height:0}50%{left:0;height:0}100%{left:0;height:100%}}@keyframes left-up{0%{left:100%;height:0}50%{left:0;height:0}100%{left:0;height:100%}}a.ab-item,body,span.ab-label{font-family:"Open Sans","Helvetica Neue",Helvetica,Arial,"游ゴシック",YuGothic,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif!important}span.ab-icon{font-family:dashicons!important}fa{font-family:FontAwesome!important}.wp-color-result{background:0 0;height:24px!important}#dashboard_right_now li a.cases-count::before{content:'\f331'}#dashboard_right_now li a.members-count::before{content:'\f307'}#dashboard_right_now li a.voice-count::before{content:'\f125'}
