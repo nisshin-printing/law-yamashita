@@ -84,22 +84,27 @@ if ( is_page() ) {
 <div id="grid-members">
 	<div class="row">
 		<?php
-		$members = array(
-			'post_type'      => 'members',
-			'posts_per_page' => '-1',
-			'orderby'        => 'ID',
-			'order'          => 'ASC',
-			'post_status'    => 'publish',
-			'tax_query'      => array(
-				array(
-					'taxonomy' => 'members-cat',
-					'field'    => 'term_id',
-					'terms'    => '53'
+		$mental_master = '350';
+		$mental_staging = '334';
+		$mental_care = ( preg_match( '/dev/', $_SERVER['SERVER_NAME'] ) ) ? $mental_staging : $mental_master;
+		$members = array( '53', '54', $mental_care );
+		foreach ( $members as $term ) :
+			$mem_args = array(
+				'post_type'      => 'members',
+				'posts_per_page' => '-1',
+				'orderby'        => 'ID',
+				'order'          => 'ASC',
+				'post_status'    => 'publish',
+				'tax_query'      => array(
+					array(
+						'taxonomy' => 'members-cat',
+						'field'    => 'term_id',
+						'terms'    => $term
 					)
 				)
 			);
-		$loop = new WP_Query( $members );
-		if($loop->have_posts()) : while($loop->have_posts()) : $loop->the_post();
+			$loop = new WP_Query( $mem_args );
+			if($loop->have_posts()) : while($loop->have_posts()) : $loop->the_post();
 		?>
 		<article <?php post_class( 'grid-item bg-mask-wrapper' ); ?>>
 			<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="bg-mask waves-effect"></a>
@@ -114,37 +119,10 @@ if ( is_page() ) {
 			</h2>
 		</article>
 		<?php
-		endwhile; endif;
-		$members_args = array(
-			'post_type'      => 'members',
-			'posts_per_page' => '-1',
-			'orderby'        => 'ID',
-			'order'          => 'ASC',
-			'post_status'    => 'publish',
-			'tax_query'      => array(
-				array(
-					'taxonomy' => 'members-cat',
-					'field'    => 'term_id',
-					'terms'    => '54'
-					)
-				)
-			);
-		$loop = new WP_Query( $members_args );
-		if($loop->have_posts()) : while($loop->have_posts()) : $loop->the_post();
+			endwhile;
+			endif;
+			endforeach;
 		?>
-		<article <?php post_class('grid-item bg-mask-wrapper'); ?>>
-			<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="bg-mask waves-effect"></a>
-			<div class="img-wrapper"><?php the_post_thumbnail(); ?></div>
-			<h2>
-				<?php
-				if(get_post_meta($post->ID, 'subtitle', true)) {
-					echo '<span class="subtitle">' .get_post_meta($post->ID, 'subtitle', true). '</span>';
-				}
-				?>
-				<?php the_title(); ?>
-			</h2>
-		</article>
-	<?php endwhile; endif; ?>
 </div>
 </div>
 <?php

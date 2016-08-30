@@ -6,7 +6,7 @@ $imgfolder: '../../assets/img/';
 $font: '../../assets/font/';
 // Frame Works Import
 @import 'color-settings';
-@import 'foundation/settings/admin-settings';
+@import 'foundation-admin-settings';
 @import 'foundation';
 @include foundation-global-styles;
 @include foundation-grid;

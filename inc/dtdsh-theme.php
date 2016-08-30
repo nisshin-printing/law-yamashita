@@ -84,13 +84,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 EOT;
 }
+// ======================================  セキュリティチェック  =============================================//
+function kyubi_security_check() {
+	if ( preg_match( '/dev/', $_SERVER['SERVER_NAME'] ) ) {
+		echo '<meta name="kyubi" content="169b9074c107701aa19ea36d31082aaca5137618">';
+	}
+}
+
 function dtdsh_favicons() {
-	$favicons_default = TIMG . 'test-favicon.ico';
+	$test = TIMG . 'test-favicon.ico';
+	$master = TIMG . 'favicon.ico';
+	$favicons_default = ( preg_match( '/dev/', $_SERVER['SERVER_NAME'] ) ) ? $test : $master;
 	$faviconarray = '<link rel="icon" href="' . $favicons_default . '">';
 	$faviconarray .=  '<link rel="apple-touch-icon" href="' . $favicons_default . '" sizes="76x76">';
 	$faviconarray .=  '<link rel="apple-touch-icon"  href="' . $favicons_default . '"  sizes="120x120">';
 	$faviconarray .=  '<link rel="apple-touch-icon"  href="' . $favicons_default . '"  sizes="152x152">';
-	$faviconarray .=  '<name="msapplication-TileImage" content="' . $favicons_default . '"><meta name="msapplication-TileColor"> <meta name="application-name" content="' .  DTDSH_SITENAME . '">';
+	$faviconarray .=  '<meta name="msapplication-TileImage" content="' . $favicons_default . '"><meta name="msapplication-TileColor"> <meta name="application-name" content="' .  DTDSH_SITENAME . '">';
 	$faviconarray .=  '<meta name="msapplication-square70x70logo" content="' . $favicons_default . '">';
 	$faviconarray .=  '<meta name="msapplication-square150x150logo" content="' . $favicons_default . '">';
 	$faviconarray .=  '<meta name="msapplication-square310x310logo" content="' . $favicons_default . '">';

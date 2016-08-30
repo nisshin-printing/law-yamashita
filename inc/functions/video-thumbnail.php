@@ -129,3 +129,19 @@ function dtdsh_videoThumbnail_return( $url ) {
 	<div class="reveal" id="' . $randomstring . '" data-reveal><div class="flex-video">' . $frame . '</div><button class="close-button" data-close type="button">&times;</button></div>';
 	return $html;
 }
+
+
+
+// ショートコード
+add_shortcode( 'video-thumbnail', 'shortcode_videoThumbnail' );
+function shortcode_videoThumbnail( $atts ) {
+	extract(
+		shortcode_atts(
+			array(
+				'url' => '',
+			),
+			$atts
+		)
+	);
+	return $html = dtdsh_videoThumbnail_return( $url );
+}

@@ -2,6 +2,8 @@ jQuery(document).ready(function($) {
 	var adminBar = ( document.getElementById('wpadminbar') != null ) ? $('#wpadminbar').height() : 0,
 	mainNav = ( document.getElementById('sticky-topbar') != null ) ? $('#sticky-topbar').height() : 0,
 	headerHeight = parseInt(adminBar) + parseInt(mainNav);
+// ============================== IE9 以上のSVGサポート ============================================================================= //
+	svg4everybody();
 // ============================== Foundation 6 ============================================================================= //
 	// Default Settings
 	Foundation.Accordion.defaults.allowAllClosed = true;
@@ -154,6 +156,10 @@ $('#chart-bar').highcharts({
 			return '<b>' + this.x + '</b><br>' +
 				this.series.name + '： <b>' + Highcharts.numberFormat(this.y, 0, '', ',') + '</b>件';
 		}
+	},
+	credits: {
+		href: "http://dtdsh.com/",
+		text: "日進印刷株式会社"
 	},
 	series: [{
 		name: '相談件数',

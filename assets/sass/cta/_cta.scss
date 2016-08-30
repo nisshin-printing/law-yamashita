@@ -54,3 +54,12 @@
 		}
 	}
 }
+
+
+
+// CTA ボタン
+.cta-button {
+	font-size: 123%;
+	@extend .b0;
+	@extend .bg-haikus;
+}

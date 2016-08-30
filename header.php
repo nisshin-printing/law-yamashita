@@ -8,8 +8,9 @@ if ( is_front_page() || is_singular( 'dtdsh-lp' ) ) {
 $on_load = ( is_page( 'access' ) ) ? ' onload="initialize();"' : '';
 $head = ( is_singular() ) ? '<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">' : '<html lang="ja" dir="ltr"><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">';
 $is_sticky = ( is_singular( 'dtdsh-lp' ) ) ? '' : ' id="sticky-topbar"';
-$master_logo = '3464';
-$staging_logo = '3585';
+$master = '3464';
+$staging = '3585';
+$logo_url = ( preg_match( '/dev/', $_SERVER['SERVER_NAME'] ) ) ? $staging : $master;
 echo '<!DOCTYPE html>
 <html lang="ja" dir="ltr">',
 $head,
@@ -20,12 +21,12 @@ $head,
 <script src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-<script>', file_get_contents( TJS . 'prefetch-onload.min.js' ),'</script>
-<meta name="theme-color" content="#CB141C">';
+<script>', file_get_contents( TJS . 'prefetch-onload.min.js' ),'</script>';
+	kyubi_security_check();
 	dtdsh_dynamic_inlining_style();
 	wp_head();
 echo '</head>
-<body id="PageTop"', body_class(), $on_load, '>',
+<body id="PageTop" ', body_class(), $on_load, '>',
 google_tag_manager_install(),
 '<div class="off-canvas-wrapper">
 <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
@@ -43,7 +44,7 @@ google_tag_manager_install(),
 		<nav class="top-bar" role="navigation">
 			<ul class="title">
 				<li class="li-nav', $li_class, '"><a id="btn-nav" class="waves-effect button" data-open="spNav" title="メニュー"><i class="fa fa-bars"></i>', $btn, '</a></li>
-				<li class="title-logo"><a class="waves-effect" href="', DTDSH_HOME_URL, '" title="', DTDSH_SITENAME, '"><img src="', wp_get_attachment_image_src( $staging_logo, 'full' )[0], '" alt="', DTDSH_SITENAME, '" width="', wp_get_attachment_image_src( $staging_logo, 'full' )[1], '" height="', wp_get_attachment_image_src( $staging_logo, 'full' )[2], '"></a></li>
+				<li class="title-logo"><a class="waves-effect" href="', DTDSH_HOME_URL, '" title="', DTDSH_SITENAME, '"><img src="', wp_get_attachment_image_src( $logo_url, 'full' )[0], '" alt="', DTDSH_SITENAME, '" width="', wp_get_attachment_image_src( $logo_url, 'full' )[1], '" height="', wp_get_attachment_image_src( $logo_url, 'full' )[2], '"></a></li>
 			</ul>';
 				wp_nav_menu( array(
 					'theme_location'  => 'ringo-main',

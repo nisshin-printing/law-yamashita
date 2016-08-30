@@ -3,14 +3,15 @@ if ( ! function_exists( 'dtdsh_dynamic_navmenu' ) ) :
 function dtdsh_dynamic_navmenu( $global_nav = false ) {
 	$master_nav_tel = '3465';
 	$staging_nav_tel = '3507';
+	$nav_tel_id = ( preg_match( '/dev/', $_SERVER['SERVER_NAME'] ) ) ? $staging_nav_tel : $master_nav_tel;
 	$is_column = ( ! $global_nav ) ? ' class="column"' : '';
 	// All
 	echo '<nav role="navigation"', $is_column, '>
-		<form action="', DTDSH_HOME_URL, '" id="nav-search" role="search" method="search" name="nav-search" itemprop="potentialAction" itemscope="itemscope" itemtype="http://schema.org/SearchAction">
+		<form action="', DTDSH_HOME_URL, '" role="search" method="search" itemprop="potentialAction" itemscope="itemscope" itemtype="http://schema.org/SearchAction">
 			<input type="search" name="s" placeholder="気になるキーワードを入力" required="required">
 			<button type="submit"><i class="fa fa-search"></i></button>
 		</form>
-		<a href="', DTDSH_HOME_URL, 'contact" title="お問い合わせ" class="btn-call waves-effect"><img src="', dtdsh_photon_img( $staging_nav_tel, 'src' ), '" alt="お問い合わせ" width="', dtdsh_photon_img( $staging_nav_tel, 'width' ), '" height="', dtdsh_photon_img( $staging_nav_tel, 'height' ), '"></a>
+		<a href="', DTDSH_HOME_URL, 'contact" title="お問い合わせ" class="btn-call waves-effect"><img src="', dtdsh_photon_img( $nav_tel_id, 'src' ), '" alt="お問い合わせ" width="', dtdsh_photon_img( $nav_tel_id, 'width' ), '" height="', dtdsh_photon_img( $nav_tel_id, 'height' ), '"></a>
 		<a href="', DTDSH_HOME_URL, 'contact" class="button expanded waves-effect btn-contact" title="今すぐ無料の法律相談">メールでお問い合わせ</a>';
 
 	// 交通事故
@@ -114,7 +115,7 @@ function dtdsh_footer() {
 	get_footer();
 	$foot = ob_get_contents();
 	ob_end_clean();
-	$foot = str_replace( ' type="text/javascript"', '', $foot );
+	$foot = preg_replace( '/<script.+text\/javascript.+src=[\'|\"](.+)[\'|\"].+>/', '<script src="$1"></script>', $foot );
 	$foot = str_replace( '" />', '">', $foot );
 	$foot = dtdsh_html_format( $foot, false );
 	echo $foot;

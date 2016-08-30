@@ -39,52 +39,35 @@
 <dl class="sub-nav">
 	<dt>メンバー ：</dt>
 <?php
-	$mem_args = array(
-		'posts_per_page' 	=> '-1',
-		'orderby' 			=> 'ID',
-		'order' 			=> 'ASC',
-		'post_status' 		=> 'publish',
-		'post_type' 		=> 'members',
-		'tax_query'         => array(
-			array(
-				'taxonomy' => 'members-cat',
-				'field'    => 'term_id',
-				'terms'    => '53'
+	$mental_master = '350';
+	$mental_staging = '334';
+	$mental_care = ( preg_match( '/dev/', $_SERVER['SERVER_NAME'] ) ) ? $mental_staging : $mental_master;
+	$members = array( '53', '54', $mental_care );
+	foreach ( $members as $term ) :
+		$mem_args = array(
+			'posts_per_page' => '-1',
+			'orderby'        => 'ID',
+			'order'          => 'ASC',
+			'post_status'    => 'publish',
+			'post_type'      => 'members',
+			'tax_query'      => array(
+				array(
+					'taxonomy' => 'members-cat',
+					'field'    => 'term_id',
+					'terms'    => $term
+				)
 			)
-		)
-	);
-	$loop = new WP_Query( $mem_args );
-	if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post();
-		$is_active = ( is_single( $id ) ) ? ' class="active"' : '';
-?>
-	<dd><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"<?php echo $is_active; ?>><?php the_title(); ?></a></dd>
-<?php
-	endwhile;
-	wp_reset_postdata();
-	endif;
-	$mem_args = array(
-		'posts_per_page' 	=> '-1',
-		'orderby' 			=> 'ID',
-		'order' 			=> 'ASC',
-		'post_status' 		=> 'publish',
-		'post_type' 		=> 'members',
-		'tax_query'         => array(
-			array(
-				'taxonomy' => 'members-cat',
-				'field'    => 'term_id',
-				'terms'    => '54'
-			)
-		)
-	);
-	$loop = new WP_Query( $mem_args );
-	if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post();
-		$is_active = ( is_single( $id ) ) ? ' class="active"' : '';
+		);
+		$loop = new WP_Query( $mem_args );
+		if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post();
+			$is_active = ( is_single( $id ) ) ? ' class="active"' : '';
 ?>
 			<dd><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"<?php echo $is_active; ?>><?php the_title(); ?></a></dd>
 <?php
-	endwhile;
-	wp_reset_postdata();
-	endif;
+		endwhile;
+		wp_reset_postdata();
+		endif;
+	endforeach;
 ?>
 </dl>
 <?php

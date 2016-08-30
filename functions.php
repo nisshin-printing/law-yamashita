@@ -14,6 +14,7 @@ define( 'TIMG', TURI . 'assets' . DSEP . 'img' . DSEP );
 define( 'TSVG', TURI . 'assets' . DSEP . 'svg' . DSEP . 'icons.svg' );
 define( 'TCSS', TURI . 'assets' . DSEP . 'css' . DSEP );
 define( 'TJS', TURI . 'assets' . DSEP . 'js' . DSEP );
+define( 'TAUDIO', TURI . 'assets' . DSEP . 'audio' . DSEP );
 define( 'TFRONT', INC . 'front-page' . DSEP );
 define( 'TADMIN', INC . 'admin' . DSEP );
 define( 'TFUNC', INC . 'functions' . DSEP );

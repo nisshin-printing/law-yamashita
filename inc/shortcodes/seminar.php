@@ -123,6 +123,7 @@ function show_seminar_lists() {
 			'lawyer'    => '笠原輔',
 			'lawyer_id' => '553',
 			'resume'    => '15-resume.pdf',
+			'audio'     => '15-audio.mp3',
 		),
 		array(
 			'num'       => '16',
@@ -131,6 +132,16 @@ function show_seminar_lists() {
 			'lawyer'    => '稲垣洋之',
 			'lawyer_id' => '551',
 			'resume'    => '16-resume.pdf',
+			'audio'     => '16-audio.mp3',
+		),
+		array(
+			'num'       => '17',
+			'time'      => '2016年7月28日',
+			'title'     => 'ポイント解説！有期労働契約の更新・雇止め',
+			'lawyer'    => '田中伸',
+			'lawyer_id' => '549',
+			'resume'    => '17-resume.pdf',
+			'audio'     => '17-audio.mp3',
 		),
 	);
 	$seminar_array = array_reverse( $seminar_array );
@@ -160,7 +171,11 @@ function show_seminar_lists() {
 		if ( ! empty( $seminar["comment"] ) ) {
 			$html .= '<a href="http://www.law-yamashita.com/downloads/seminar/' . $seminar["comment"] . '" class="waves-effect button" title="' . $seminar["title"] . '-' . $seminar["lawyer"] . '" target="_blank">基本契約書（見本）におけるコメント</a>';
 		}
-		$html .= '</div></div></article>';
+		$html .= '</div>';
+		if ( ! empty( $seminar["audio"] ) ) {
+			$html .= '<audio src="' . TAUDIO . $seminar["audio"] . '" controls><p>音声を再生するには、サポートするブラウザが必要です。</p></audio>';
+		}
+		$html .= '</div></article>';
 	}
 	return $html;
 }

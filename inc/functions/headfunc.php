@@ -10,7 +10,7 @@ endif;
 //========================  Header周り ========================================================================//
 if ( ! function_exists( 'dtdsh_dynamic_inlining_style' ) ) :
 function dtdsh_dynamic_inlining_style() {
-	echo '<link rel=stylesheet href="' . SURI . '">';
+	echo '<link rel="stylesheet" href="' . TCSS . 'style.css">';
 	if ( function_exists( 'wpcf7_enqueue_styles' ) && is_page( array( '1185', '1172', '1153', '1161', '1167', '1144', '1176', '2528', '1155', '1179' ) ) ) {
 		wpcf7_enqueue_styles();
 	}

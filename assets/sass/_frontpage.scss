@@ -136,9 +136,10 @@
 		margin-bottom: .9375rem;
 	}
 	.column-inner {
-		border: 1px solid;
-		border-color: currentColor;
+		background-color: #FFF;
+		border-radius: 2px;
 		text-align: center;
+		@extend .b-shadow-1;
 		ul,
 		li a {
 			text-align: left;

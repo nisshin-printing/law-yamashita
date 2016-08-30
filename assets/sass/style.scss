@@ -1,12 +1,13 @@
 // Global Settings
 $main-font: 'Quicksand', '游ゴシック体', 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
 $noto-font: 'Quicksand', 'Noto Sans Japanese', '游ゴシック体', 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
-$imgfolder: 'assets/img/';
-$font: 'assets/font/';
+$imgfolder: '../img/';
+$font: '../font/';
 // Frame Works Import
 @import 'color-settings';
-@import 'foundation/settings/settings';
+@import 'foundation-settings';
 @import 'foundation';
+
 @include foundation-global-styles;
 @include foundation-grid;
 @include foundation-typography;
@@ -81,6 +82,7 @@ $font: 'assets/font/';
 @import 'page/page';
 @import 'page/members';
 @import 'page/scope';
+@import 'page/my-best-pro';
 // Post
 @import 'post/post';
 @import 'post/members';
