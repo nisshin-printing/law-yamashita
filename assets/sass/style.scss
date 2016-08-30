@@ -3,6 +3,10 @@ $main-font: 'Quicksand', '游ゴシック体', 'Yu Gothic', YuGothic, 'ヒラギ
 $noto-font: 'Quicksand', 'Noto Sans Japanese', '游ゴシック体', 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
 $imgfolder: '../img/';
 $font: '../font/';
+
+// Debug
+@import 'parts/debugs';
+
 // Frame Works Import
 @import 'color-settings';
 @import 'foundation-settings';
@@ -47,12 +51,12 @@ $font: '../font/';
 // @import 'foundation/motion-ui';
 
 @import 'mixin';
-@import 'framework/uiGradients';
-@import 'framework/waves';
-@import 'framework/cards';
-@import 'framework/slick-slider';
-@import 'framework/valign-column';
-@import 'framework/video-reveal';
+@import 'parts/uiGradients';
+@import 'parts/waves';
+@import 'parts/cards';
+@import 'parts/slick-slider';
+@import 'parts/valign-column';
+@import 'parts/video-reveal';
 
 // Add Styles for Frameworks
 @import 'ff/accordion';
