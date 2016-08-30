@@ -2,8 +2,6 @@ jQuery(document).ready(function($) {
 	var adminBar = ( document.getElementById('wpadminbar') != null ) ? $('#wpadminbar').height() : 0,
 	mainNav = ( document.getElementById('sticky-topbar') != null ) ? $('#sticky-topbar').height() : 0,
 	headerHeight = parseInt(adminBar) + parseInt(mainNav);
-// ============================== IE9 以上のSVGサポート ============================================================================= //
-	svg4everybody();
 // ============================== Foundation 6 ============================================================================= //
 	// Default Settings
 	Foundation.Accordion.defaults.allowAllClosed = true;
@@ -157,10 +155,6 @@ $('#chart-bar').highcharts({
 				this.series.name + '： <b>' + Highcharts.numberFormat(this.y, 0, '', ',') + '</b>件';
 		}
 	},
-	credits: {
-		href: "http://dtdsh.com/",
-		text: "日進印刷株式会社"
-	},
 	series: [{
 		name: '相談件数',
 		data: [1578, 2289, 908, 4290, 0, 0, 72]
@@ -187,15 +181,9 @@ $('#chart-bar').highcharts({
 		if ( inputNum < 300 ) {
 			resultNum01 = ( inputNum * 0.08 <= 20) ? 20 : inputNum * 0.08;
 			resultNum02 = inputNum * 0.16;
-		} else if ( 300 <= inputNum < 3000 ) {
+		} else if ( 300 <= inputNum ) {
 			resultNum01 = inputNum * 0.05 + 9;
 			resultNum02 = inputNum * 0.1 + 18;
-		} else if ( 3000 <= inputNum < 30000 ) {
-			resultNum01 = inputNum * 0.03 + 69;
-			resultNum02 = inputNum * 0.06 + 138;
-		} else if ( 30000 <= inputNum ) {
-			resultNum01 = inputNum * 0.02 + 369;
-			resultNum02 = inputNum * 0.04 + 738;
 		} else {
 			resultNum01 = '';
 			resultNum02 = '';
@@ -212,12 +200,8 @@ $('#chart-bar').highcharts({
 		var inputNum  = $(this).val();
 		if ( inputNum < 300 ) {
 			resultNum = 10;
-		} else if ( 300 <= inputNum < 3000 ) {
+		} else if ( 300 <= inputNum ) {
 			resultNum = inputNum * 0.01 + 7;
-		} else if ( 3000 <= inputNum < 30000 ) {
-			resultNum = inputNum * 0.003 + 280;
-		} else if ( 30000 <= inputNum ) {
-			resultNum = inputNum * 0.0105 + 880;
 		} else {
 			resultNum = '';
 		}
@@ -232,12 +216,8 @@ $('#chart-bar').highcharts({
 		inputNum = $(this).parents('.igon').find('.num').val();
 		if ( inputNum < 300 ) {
 			resultNum = 20;
-		} else if ( 300 <= inputNum < 3000 ) {
+		} else if ( 300 <= inputNum ) {
 			resultNum = inputNum * 0.01 + 17;
-		} else if ( 3000 <= inputNum < 30000 ) {
-			resultNum = inputNum * 0.03 + 38;
-		} else if ( 30000 <= inputNum ) {
-			resultNum = inputNum * 0.01 + 98;
 		} else {
 			resultNum = '';
 		}
@@ -254,12 +234,8 @@ $('#chart-bar').highcharts({
 		} else {
 			if ( inputNum < 300 ) {
 				resultNum = 20;
-			} else if ( 300 <= inputNum < 3000 ) {
+			} else if ( 300 <= inputNum ) {
 				resultNum = inputNum * 0.01 + 17;
-			} else if ( 3000 <= inputNum < 30000 ) {
-				resultNum = inputNum * 0.03 + 38;
-			} else if ( 30000 <= inputNum ) {
-				resultNum = inputNum * 0.01 + 98;
 			} else {
 				resultNum = '';
 			}
@@ -274,12 +250,8 @@ $('#chart-bar').highcharts({
 		var inputNum  = $(this).val();
 		if ( inputNum < 300 ) {
 			resultNum = 30;
-		} else if ( 300 <= inputNum < 3000 ) {
+		} else if ( 300 <= inputNum ) {
 			resultNum = inputNum * 0.02 + 24;
-		} else if ( 3000 <= inputNum < 30000 ) {
-			resultNum = inputNum * 0.01 + 54;
-		} else if ( 30000 <= inputNum ) {
-			resultNum = inputNum * 0.005 + 204;
 		} else {
 			resultNum = '';
 		}

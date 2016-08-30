@@ -4,9 +4,6 @@ $noto-font: 'Quicksand', 'Noto Sans Japanese', '游ゴシック体', 'Yu Gothic'
 $imgfolder: '../img/';
 $font: '../font/';
 
-// Debug
-@import 'parts/debugs';
-
 // Frame Works Import
 @import 'color-settings';
 @import 'foundation-settings';
@@ -112,3 +109,8 @@ $font: '../font/';
 @import 'cta/select-members';
 // Contact Form 7
 @import 'contact';
+
+
+
+// Debug
+@import 'parts/debugs';
