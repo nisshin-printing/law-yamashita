@@ -14,7 +14,7 @@ $logo_url = ( preg_match( '/dev/', $_SERVER['SERVER_NAME'] ) ) ? $staging : $mas
 echo '<!DOCTYPE html>
 <html lang="ja" dir="ltr">',
 $head,
-'<meta charset="utf-8">
+'<meta charset="UFT-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chorme=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--[if lt IE 9]>
