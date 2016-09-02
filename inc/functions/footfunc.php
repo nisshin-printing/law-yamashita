@@ -7,7 +7,7 @@ function dtdsh_dynamic_navmenu( $global_nav = false ) {
 	$is_column = ( ! $global_nav ) ? ' class="column"' : '';
 	// All
 	echo '<nav role="navigation"', $is_column, '>
-		<form action="', DTDSH_HOME_URL, '" role="search" method="search" itemprop="potentialAction" itemscope="itemscope" itemtype="http://schema.org/SearchAction">
+		<form action="', DTDSH_HOME_URL, '" role="search" method="search">
 			<input type="search" name="s" placeholder="気になるキーワードを入力" required="required">
 			<button type="submit"><i class="fa fa-search"></i></button>
 		</form>

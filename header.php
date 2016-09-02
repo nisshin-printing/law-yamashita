@@ -22,7 +22,6 @@ $head,
 <script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 <script>', file_get_contents( TJS . 'prefetch-onload.min.js' ),'</script>';
-	dtdsh_schemaJson();
 	dtdsh_dynamic_inlining_style();
 	wp_head();
 echo '</head>
