@@ -22,11 +22,11 @@ $head,
 <script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 <script>', file_get_contents( TJS . 'prefetch-onload.min.js' ),'</script>';
-	kyubi_security_check();
+	dtdsh_schemaJson();
 	dtdsh_dynamic_inlining_style();
 	wp_head();
 echo '</head>
-<body id="PageTop" ', body_class(), $on_load, '>',
+<body id="PageTop" itemscope itemtype="http://schema.org/WebPage" ', body_class(), $on_load, '>',
 google_tag_manager_install(),
 '<div class="off-canvas-wrapper">
 <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>

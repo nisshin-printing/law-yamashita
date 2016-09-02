@@ -67,8 +67,12 @@ function save_client_box( $post_id ) {
 	if ( ! current_user_can( 'edit_post', $post->ID ) ) { return $post_id; }
 	if ( 'voice' == $_POST['post_type'] ) {
 		update_post_meta( $post->ID, 'duration', $_POST['duration'] );
-		update_post_meta( $post->ID, 'charge_lawyer', $_POST['charge_lawyer'] );
 		update_post_meta( $post->ID, 'box_numbers', $_POST['box_numbers'] );
+	}
+	if ( 'voice' == $_POST['post_type'] && isset( $_POST['charge_lawyer'] ) ) {
+		update_post_meta( $post->ID, 'charge_lawyer', $_POST['charge_lawyer'] );
+	} else {
+		update_post_meta( $post->ID, 'charge_lawyer', null );
 	}
 }
 function add_client_box() {

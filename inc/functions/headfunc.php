@@ -154,7 +154,7 @@ function breadcrumbs( $args = array() ){
 		'author'     => 'タグ',
 		'notfound'   => 'ページがありません！',
 		'liOption'   => 'itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem"',
-		'aOption'    => 'itemscope itemprop="item"',
+		'aOption'    => 'itemscope itemtype="http://schema.org/Thing" itemprop="item"',
 		'spanOption' => 'itemprop="name"',
 		'metaOption' => 'itemprop="position"',
 	);
@@ -167,112 +167,149 @@ function breadcrumbs( $args = array() ){
 		$my_taxonomy = get_query_var( 'taxonomy' );
 		$cpt = get_query_var( 'post_type' );
 
-		// カスタムタクソノミーのページ
+		// カスタムタクソノミー
 		if ( $my_taxonomy && is_tax( $my_taxonomy ) ) {
 			$my_tax = get_queried_object();
 			$post_types = get_taxonomy( $my_taxonomy )->object_type;
 			$cpt = $post_types[0];
 			$str .= '<li ' . $liOption . '><a href="' . get_post_type_archive_link( $cpt ) . '" ' . $aOption . '><span ' . $spanOption . '>' . get_post_type_object( $cpt )->label . '</span></a><meta ' . $metaOption . ' content="2"></li>';
-			$ancestor_Num = 0;
 			$count = 3;
 			if ( $my_tax->parent != 0 ) {
 				$ancestors = array_reverse( get_ancestors( $my_tax->term_id, $my_tax->taxonomy ) );
 				$ancestor_Num = count( $ancestors );
 				$count = $ancestor_Num + 2;
-				i = 0;
-				while ( 0 < $ancestor_Num ) {
+				while ( $count < $ancestor_Num + 3 ) {
+					$str .= '<li ' . $liOption . '><a href="' . get_term_link( $ancestors[$count - 3], $my_tax->taxonomy ) . '" ' . $aOption . '><span ' . $spanOption . '>' . get_term( $ancestors[$count - 3], $my_tax->taxonomy )->name . '</span></a><meta ' . $metaOption . ' content="' . $count . '"></li>';
 					$count++;
-					$str .= '<li ' . $liOption . '><a href="' . get_term_link( $ancestors[], $my_tax->taxonomy ) . '" ' . $aOption . '><span ' . $spanOption . '>' . get_term( $ancestors[], $my_tax->taxonomy )->name . '</span></a><meta ' . $metaOption . ' content="' . $count . '"></li>';
 				}
 			}
 			$str .= '<li class="current hide-for-small-only" ' . $liOption . '><span ' . $spanOption . '>' . $my_tax->name . '</span><meta ' . $metaOption . ' content="' . $count . '"></li>';
-		} elseif(is_category()) {  //カテゴリーのアーカイブページ
+
+		//カテゴリー - Archive
+		} elseif ( is_category() ) {
 			$cat = get_queried_object();
-			$str .= '<li ' .$liOption. '><a href="'.get_home_url().'/topics/" '.$aOption.'><span '.$spanOption.'>トピックス</span></a></li>';
-			if($cat->parent != 0){
-				$ancestors = array_reverse(get_ancestors( $cat->cat_ID, 'category' ));
-				foreach($ancestors as $ancestor){
-					$str .= '<li '.$liOption.'><a href="'. get_category_link($ancestor) .'" '.$aOption.'><span '.$spanOption.'>'. get_cat_name($ancestor) .'</span></a></li>';
+			$str .= '<li ' . $liOption . '><a href="' . DTDSH_HOME_URL . 'topics/" ' . $aOption . '><span ' . $spanOption . '>トピックス</span></a><meta ' . $metaOption . ' content="2"></li>';
+			$count = 3;
+			if ( $cat->parent != 0 ){
+				$ancestors = array_reverse( get_ancestors( $cat->cat_ID, 'category' ) );
+				$ancestor_Num = count( $ancestors );
+				$count = $ancestor_Num + 2;
+				while ( $count < $ancestor_Num + 3 ) {
+					$str .= '<li ' . $liOption . '><a href="' . get_category_link( $ancestors[$count - 3] ) . '" ' . $aOption . '><span ' . $spanOption . '>' . get_cat_name( $ancestors[$count - 3] ) . '</span></a><meta ' . $metaOption . ' content="' . $count . '"></li>';
+					$count++;
 				}
 			}
-			$str .= '<li class="current hide-for-small-only" '.$liOption.'><span '.$spanOption.'>'. $cat->name . '</span></li>';
+			$str .= '<li class="current hide-for-small-only" ' . $liOption . '><span ' . $spanOption . '>' . $cat->name . '</span><meta ' . $metaOption . ' content="' . $count . '"></li>';
 
+		//カスタム投稿 - Archive
+		} elseif ( is_post_type_archive() ) {
+			$cpt = get_query_var( 'post_type' );
+			$str .= '<li class="current hide-for-small-only" ' . $liOption . '><span ' . $spanOption . '>' . get_post_type_object( $cpt )->label . '</span><meta ' . $metaOption . ' content="2"></li>';
 
+		// メンバー - Single
+		} elseif( is_singular( 'members' ) ) {
+			$str .= '<li ' . $liOption . '><a ' . $aOption . ' href="' . get_page_link( '125' ) . '"><span ' . $spanOption . '>' . get_post_type_object( get_post_type() )->label . '</span></a><meta ' . $metaOption . ' content="2"></li><li class="current hide-for-small-only" ' . $liOption . '><span ' . $spanOption . '>' . $post->post_title . '</span><meta ' . $metaOption . ' content="3"></li>';
 
-		}elseif(is_post_type_archive()) {  //カスタム投稿のアーカイブページ
-			$cpt = get_query_var('post_type');
-			$str .= '<li class="current hide-for-small-only" '.$liOption.'><span '.$spanOption.'>'. get_post_type_object($cpt)->label . '</span></li>';
-
-
-
-		} elseif(is_singular('members')) {
-			$str .= '<li '.$liOption.'><a '.$aOption.' href="'.get_permalink(get_page_by_path('members')).'"><span '.$spanOption.'>'.get_post_type_object(get_post_type())->label.'</span></a></li>';
-			$str .= '<li class="current hide-for-small-only" '.$liOption.'><span '.$spanOption.'>'.$post->post_title.'</span></li>';
-
-
-
-
-		} elseif($cpt && is_singular($cpt)){  //カスタム投稿の個別記事ページ
-			$taxes = get_object_taxonomies($cpt);
+		// カスタム投稿 - Single
+		} elseif ( $cpt && is_singular( $cpt ) ) {
+			$taxes = get_object_taxonomies( $cpt );
 			$mytax = $taxes[0];
-			$str .= '<li '.$liOption.'><a href="' .get_post_type_archive_link($cpt).'" '.$aOption.'><span '.$spanOption.'>'. get_post_type_object($cpt)->label.'</span></a></li>';  //カスタム投稿のアーカイブへのリンクを出力
-			$taxes = get_the_terms($post->ID, $mytax);
-			$tax = get_youngest_tax($taxes, $mytax );
-			if($tax->parent != 0){
-				$ancestors = array_reverse(get_ancestors( $tax->term_id, $mytax ));
-				foreach($ancestors as $ancestor){
-					$str .= '<li '.$liOption.'><a href="'. get_term_link($ancestor, $mytax).'" '.$aOption.'><span '.$spanOption.'>'. get_term($ancestor, $mytax)->name . '</span></a></li>';
+			$str .= '<li ' . $liOption . '><a href="' . get_post_type_archive_link( $cpt ) . '" ' . $aOption . '><span ' . $spanOption . '>' . get_post_type_object( $cpt )->label . '</span></a><meta ' . $metaOption . ' content="2"></li>';
+			$count = 3;
+			if ( has_term( '', $mytax ) ) {
+				$taxes = get_the_terms( $post->ID, $mytax );
+				$tax = get_youngest_tax( $taxes, $mytax );
+				if ( $tax->parent != 0 ) {
+					$ancestors = array_reverse( get_ancestors( $tax->term_id, $mytax ) );
+					$ancestor_Num = count( $ancestors );
+					$count = $ancestor_Num + 2;
+					while ( $count < $ancestor_Num + 3 ) {
+						$str .= '<li ' . $liOption . '><a href="' . get_term_link( $ancestors[$count - 3], $mytax ) . '" ' . $aOption . '><span ' . $spanOption . '>' . get_term( $ancestors[$count - 3], $mytax )->name . '</span></a><meta ' . $metaOption . ' content="' . $count . '"></li>';
+						$count++;
+					}
+				}
+				$str .= '<li ' . $liOption . '><a href="' . get_term_link( $tax, $mytax ) . '" ' . $aOption . '><span ' . $spanOption . '>' . $tax->name . '</span></a><meta ' . $metaOption . ' content="' . $count . '"></li>';
+				$count++;
+			}
+			$str .= '<li class="current hide-for-small-only" ' . $liOption . '><span ' . $spanOption . '>' . $post->post_title . '</span><meta ' . $metaOption . ' content="' . $count . '"></li>';
+			
+		// Single
+		} elseif ( is_single() ) {
+			$str .= '<li ' . $liOption . '><a href="' . DTDSH_HOME_URL . 'topics" ' . $aOption . '><span ' . $spanOption . '>トピックス</span></a><meta ' . $metaOption . ' content="2"></li>';
+			$count = 3;
+			if ( has_category() ) {
+				$categories = get_the_category( $post->ID );
+				$cat = get_youngest_cat( $categories );
+				if ( $cat->parent != 0 ) {
+					$ancestors = array_reverse( get_ancestors( $cat->cat_ID, 'category' ) );
+					$ancestor_Num = count( $ancestors );
+					$count = $ancestor_Num + 2;
+					while ( $count < $ancestor_Num + 3 ) {
+						$str .= '<li ' . $liOption . '><a href="' . get_category_link( $ancestors[$count - 3] ) . '" ' . $aOption . '><span ' . $spanOption . '>' . get_cat_name( $ancestors[$count - 3] ) . '</span></a><meta ' . $metaOption . ' content="' . $count . '"></li>';
+						$count++;
+					}
+				}
+				$str .= '<li ' . $liOption . '><a href="' . get_category_link( $cat->term_id ) . '" ' . $aOption . '><span ' . $spanOption . '>' . $cat->cat_name . '</span></a><meta ' . $metaOption . ' content="' . $count . '"></li>';
+				$count++;
+			}
+			$str.= '<li class="current hide-for-small-only" ' . $liOption . '><span ' . $spanOption . '>' . $post->post_title . '</span><meta ' . $metaOption . ' content="' . $count . '"></li>';
+			
+		// Page
+		} elseif ( is_page() ) {
+			$count = 2;
+			if ( $post->post_parent != 0 ) {
+				$ancestors = array_reverse( get_post_ancestors( $post->ID ) );
+				$ancestor_Num = count( $ancestors );
+				$count = $ancestor_Num + 1;
+				while ( $count < $ancestor_Num + 2 ) {
+					$str .= '<li ' . $liOption . '><a href="' . get_permalink( $ancestors[$count - 2] ) . '" ' . $aOption . '><span ' . $spanOption . '>' . get_the_title( $ancestors[$count - 2] ) . '</span></a><meta ' . $metaOption . ' content="' . $count . '"></li>';
+					$count++;
 				}
 			}
-			$str .= '<li '.$liOption.'><a href="'. get_term_link($tax, $mytax).'" '.$aOption.'><span '.$spanOption.'>'. $tax->name . '</span></a></li>';
-			$str.= '<li class="current hide-for-small-only" '.$liOption.'><span '.$spanOption.'>'. $post->post_title .'</span></li>';
-		}elseif(is_single()){  //個別記事ページ
-			$str .= '<li ' .$liOption. '><a href="'.get_home_url().'/topics/" '.$aOption.'><span '.$spanOption.'>トピックス</span></a></li>';
-			$categories = get_the_category($post->ID);
-			$cat = get_youngest_cat($categories);
-			if($cat->parent != 0){
-				$ancestors = array_reverse(get_ancestors( $cat->cat_ID, 'category' ));
-				foreach($ancestors as $ancestor){
-					$str .= '<li '.$liOption.'><a href="'. get_category_link($ancestor).'" '.$aOption.'><span '.$spanOption.'>'. get_cat_name($ancestor). '</span></a></li>';
-				}
+			$str .= '<li class="current hide-for-small-only" ' . $liOption . '><span ' . $spanOption . '>' . $post->post_title . '</span><meta ' . $metaOption . ' content="' . $count . '"></li>';
+
+		// 日付 - Archive
+		} elseif ( is_date() ) {
+			$str .= '<li ' . $liOption . '><a href="' . DTDSH_HOME_URL . 'topics/" ' . $aOption . '><span ' . $spanOption . '>トピックス</span></a></li>';
+			if ( get_query_var( 'day' ) != 0 ){
+				$str .= '<li ' . $liOption . '><a href="'. get_year_link( get_query_var( 'year' ) ) . '" ' . $aOption . '><span ' . $spanOption . '>' . get_query_var( 'year' ) . '年</span></a><meta ' . $metaOption . ' content="2"></li>';
+				$str .= '<li ' . $liOption . '><a href="' . get_month_link( get_query_var( 'year' ), get_query_var( 'monthnum' ) ) . '" ' . $aOption . '><span ' . $spanOption . '>'. get_query_var( 'monthnum' ) .'月</span></a><meta ' . $metaOption . ' content="3"></li>';
+				$str .= '<li class="current hide-for-small-only" ' . $liOption . '><span ' . $spanOption . '>'. get_query_var( 'day' ) . '日</span><meta ' . $metaOption . ' content="4"></li>';
+			} elseif ( get_query_var( 'monthnum' ) != 0 ) {
+				$str .= '<li ' . $liOption . '><a href="' . get_year_link( get_query_var( 'year' ) ) . '" ' . $aOption . '><span ' . $spanOption . '>' . get_query_var( 'year' ) . '年</span></a><meta ' . $metaOption . ' content="2"></li>';
+				$str .= '<li class="current hide-for-small-only" ' . $liOption . '><span ' . $spanOption . '>' . get_query_var( 'monthnum' ) . '月</span><meta ' . $metaOption . ' content="3"></li>';
+			} else {
+				$str .= '<li class="current hide-for-small-only" ' . $liOption . '><span ' . $spanOption . '>' . get_query_var( 'year' ) . '年</span><meta ' . $metaOption . ' content="2"></li>';
 			}
-			$str .= '<li '.$liOption.'><a href="'. get_category_link($cat->term_id). '" '.$aOption.'><span '.$spanOption.'>'. $cat->cat_name . '</span></a></li>';
-			$str.= '<li class="current hide-for-small-only" '.$liOption.'><span '.$spanOption.'>'. $post->post_title .'</span></li>';
-		} elseif(is_page()){  //固定ページ
-			if($post->post_parent != 0 ){
-				$ancestors = array_reverse(get_post_ancestors( $post->ID ));
-				foreach($ancestors as $ancestor){
-					$str .= '<li '.$liOption.'><a href="'. get_permalink($ancestor).'" '.$aOption.'><span '.$spanOption.'>'. get_the_title($ancestor) .'</span></a></li>';
-				}
-			}
-			$str.= '<li class="current hide-for-small-only" '.$liOption.'><span '.$spanOption.'>'. $post->post_title .'</span></li>';
-		} elseif(is_date()){  //日付ベースのアーカイブページ
-			$str .= '<li ' .$liOption. '><a href="'.get_home_url().'/topics/" '.$aOption.'><span '.$spanOption.'>トピックス</span></a></li>';
-			if(get_query_var('day') != 0){  //年別アーカイブ
-				$str .= '<li '.$liOption.'><a href="'. get_year_link(get_query_var('year')). '" '.$aOption.'><span '.$spanOption.'>' . get_query_var('year'). '年</span></a></li>';
-				$str .= '<li '.$liOption.'><a href="'. get_month_link(get_query_var('year'), get_query_var('monthnum')). '" '.$aOption.'><span '.$spanOption.'>'. get_query_var('monthnum') .'月</span></a></li>';
-				$str .= '<li class="current hide-for-small-only" '.$liOption.'><span '.$spanOption.'>'. get_query_var('day'). '日</span></li>';
-			} elseif(get_query_var('monthnum') != 0){  //月別アーカイブ
-				$str .= '<li '.$liOption.'><a href="'. get_year_link(get_query_var('year')) .'" '.$aOption.'><span '.$spanOption.'>'. get_query_var('year') .'年</span></a></li>';
-				$str .= '<li class="current hide-for-small-only" '.$liOption.'><span '.$spanOption.'>'. get_query_var('monthnum'). '月</span></li>';
-			} else {  //年別アーカイブ
-				$str .= '<li class="current hide-for-small-only" '.$liOption.'><span '.$spanOption.'>'. get_query_var('year') .'年</span></li>';
-			}
-		} elseif(is_search()) {  //検索結果表示ページ
-			$str .= '<li class="current hide-for-small-only" '.$liOption.'><span '.$spanOption.'>「'. get_search_query() .'」'. $search .'</span></li>';
-		} elseif(is_author()){  //投稿者のアーカイブページ
-			$str .='<li class="current hide-for-small-only" '.$liOption.'><span '.$spanOption.'>'. $author .' : '. get_the_author_meta('display_name', get_query_var('author')).'</span></li>';
-		} elseif(is_tag()){  //タグのアーカイブページ
-			$str .= '<li ' .$liOption. '><a href="'.get_home_url().'/topics/" '.$aOption.'><span '.$spanOption.'>トピックス</span></a></li>';
-			$str .= '<li class="current hide-for-small-only" '.$liOption.'><span '.$spanOption.'>'. $tag .' : '. single_tag_title( '' , false ). '</span></li>';
-		} elseif(is_attachment()){  //添付ファイルページ
-			$str.= '<li class="current hide-for-small-only" '.$liOption.'><span '.$spanOption.'>'. $post->post_title .'</span></li>';
-		} elseif(is_404()){  //404 Not Found ページ
-			$str .= '<li class="current hide-for-small-only" '.$liOption.'><span '.$spanOption.'>'.$notfound.'</span></li>';
-		} elseif(is_home()) {
-			$str .= '<li class="current hide-for-small-only" '.$liOption.'><span '.$spanOption.'>トピックス</span></li>';
-		} else{  //その他
-			$str .= '<li class="current hide-for-small-only" '.$liOption.'><span '.$spanOption.'>'. wp_title('', false).'</span></li>';
+
+		// 検索結果 - Search
+		} elseif ( is_search() ) {
+			$str .= '<li class="current hide-for-small-only" ' . $liOption . '><span ' . $spanOption . '>「' . get_search_query() . '」' . $search . '</span><meta ' . $metaOption . ' content="2"></li>';
+		
+		// 投稿者 - Archive
+		} elseif ( is_author() ) {
+			$str .= '<li class="current hide-for-small-only" ' . $liOption . '><span ' . $spanOption . '>' . $author . ' : ' . get_the_author_meta( 'display_name', get_query_var( 'author' ) ) . '</span><meta ' . $metaOption . ' content="2"></li>';
+
+		// タグ - Archive
+		} elseif ( is_tag() ) {
+			$str .= '<li ' . $liOption . '><a href="' . DTDSH_HOME_URL . 'topics" ' . $aOption . '><span ' . $spanOption . '>トピックス</span></a><meta ' . $metaOption . ' content="2"></li>';
+			$str .= '<li class="current hide-for-small-only" ' . $liOption . '><span ' . $spanOption . '>' . $tag . ' : ' . single_tag_title( '' , false ) . '</span><meta ' . $metaOption . ' content="3"></li>';
+			
+		// 添付ファイル - Archive
+		} elseif ( is_attachment() ) {
+			$str.= '<li class="current hide-for-small-only" ' . $liOption . '><span ' . $spanOption . '>' . $post->post_title . '</span><meta ' . $metaOption . ' content="2"></li>';
+			
+		// 404 Not Found
+		} elseif ( is_404() ) {
+			$str .= '<li class="current hide-for-small-only" ' . $liOption . '><span ' . $spanOption . '>' . $notfound . '</span><meta ' . $metaOption . ' content="2"></li>';
+			
+		// Home - Archive
+		} elseif ( is_home() ) {
+			$str .= '<li class="current hide-for-small-only" ' . $liOption . '><span ' . $spanOption . '>トピックス</span><meta ' . $metaOption . ' content="2"></li>';
+			
+		// Else
+		} else{
+			$str .= '<li class="current hide-for-small-only" ' . $liOption . '><span ' . $spanOption . '>' . wp_title( '', false ) . '</span><meta ' . $metaOption . ' content="2"></li>';
 		}
 		$str .= '</ul>';
 	}

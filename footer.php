@@ -56,7 +56,7 @@ if ( is_archive() || is_home() ) {
 				<a href="tel:0120783409" title="電話する" class="btn-circle bg-facebook"><i class="fa fa-phone"></i></a>
 				<a href="<?php echo DTDSH_HOME_URL, 'contact'; ?>" title="お問い合わせ" class="btn-circle bg-pink"><i class="fa fa-envelope"></i></a>
 				<a href="#PageTop" class="btn-circle waves-effect bg-lime"><i class="fa fa-angle-up"></i></a>
-				<p class="footer-title">© <?php echo date( 'Y' ); ?> <?php echo DTDSH_SITENAME; ?></p>
+				<p class="footer-title">© <span itemprop="copyrightYear"><?php echo date( 'Y' ); ?></span> <?php echo DTDSH_SITENAME; ?></p>
 			</div>
 		</div>
 	</div>

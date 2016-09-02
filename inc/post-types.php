@@ -26,8 +26,10 @@ function save_relate_members( $post_id ) {
 	}
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) { return $post_id; }
 	if ( ! current_user_can('edit_post', $post->ID ) ) { return $post_id; }
-	if ( 'post' == $_POST['post_type'] ) {
+	if ( 'post' == $_POST['post_type'] && isset( $_POST['charge_lawyer'] ) ) {
 		update_post_meta( $post->ID, 'charge_lawyer', $_POST['charge_lawyer'] );
+	} else {
+		update_post_meta( $post->ID, 'charge_lawyer', null );
 	}
 }
 function add_relate_members() {

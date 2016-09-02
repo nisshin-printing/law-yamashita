@@ -67,8 +67,12 @@ function save_cases_box( $post_id ) {
 
 	if ( 'cases' == $_POST['post_type'] ) {
 		update_post_meta( $post->ID, 'duration', $_POST['duration'] );
-		update_post_meta( $post->ID, 'charge_lawyer', $_POST['charge_lawyer'] );
 		update_post_meta( $post->ID, 'box_numbers', $_POST['box_numbers'] );
+	}
+	if ( 'cases' == $_POST['post_type'] && isset( $_POST['charge_lawyer'] ) ) {
+		update_post_meta( $post->ID, 'charge_lawyer', $_POST['charge_lawyer'] );
+	} else {
+		update_post_meta( $post->ID, 'charge_lawyer', null );
 	}
 }
 function add_cases_box() {
