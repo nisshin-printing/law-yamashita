@@ -141,7 +141,7 @@ function dtdsh_get_sociallist() {
 	echo '<ul class="social-box no-bullet clearfix">', $facebook, $googleplus, $youtube, '</ul>';
 }
 
-// Breadcrumbs
+//========================  Breadcrumbs ========================================================================//
 if ( ! function_exists( 'breadcrumbs' ) ) :
 function breadcrumbs( $args = array() ){
 	global $post;
@@ -372,3 +372,134 @@ function get_youngest_tax( $taxes, $mytaxonomy ) {
 	return $youngest;
 }
 endif;
+
+
+//========================  リッチスニペット ========================================================================//
+add_action( 'wp_head', function() {
+	$logo = TURI . 'assets/img/favicon30x30.png';
+	if ( is_front_page() ) {
+		echo '
+<script type="application/ld+json">
+{
+	"@context": "http://schema.org",
+	"@type": "WebSite",
+	"url": "', DTDSH_HOME_URL, '",
+	"potentialAction": {
+		"@type": "SearchAction",
+		"target": "', DTDSH_HOME_URL, '?s={search_term_string}",
+		"query-input": "required name=search_term_string"
+	}
+}
+</script>
+';
+	}
+	if ( is_single() ) {
+		$excerpt = preg_replace( '#[\r|\n]#', '', strip_tags( get_the_excerpt() ) );
+		$get_lawyer_check = get_post_meta( get_the_ID(), 'charge_lawyer', true );
+		if ( has_post_thumbnail() ) {
+			$image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
+		} elseif ( dtd_catch_content_img() !== 'none' ) {
+			$image = dtd_catch_content_img();
+		} else {
+			$image = $logo;
+		}
+		if ( is_array( $get_lawyer_check ) ) {
+			foreach ( $get_lawyer_check as $member ) {
+				$post_status = get_post_status( $member );
+				if ( 'publish' == $post_status ) {
+					$authorName = get_the_title( $member );
+					$authorImage = get_the_post_thumbnail( $member );
+					break;
+				}
+			}
+		} else {
+			$authorName = 'none';
+		}
+		echo '
+<script type="application/ld+json">
+{
+	"@context": "http://schema.org",
+	"@type": "NewsArticle",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "', get_the_permalink(), '"
+	},
+	"headline": "', esc_js( get_the_title() ), '",
+	"image": {
+		"@type": "ImageObject",
+		"url": "', $image, '",
+		"width": "250",
+		"height": "250"
+	},
+	"datePublished": "', get_the_date( DateTime::ATOM ), '",
+	"dateModified": "', get_the_modified_date( DateTime::ATOM ), '",';
+		if ( 'none' !== $authorName ) {
+		echo '"author": { "@type": "Person", "name": "', esc_js( $authorName ), '" },';
+	}
+	echo '
+	"publisher": {
+		"@type": "Organization",
+		"name": "', DTDSH_SITENAME, '",
+		"telephone": "0120-7834-09",
+		"email": "info@law-yamashita.com",
+		"url": "', DTDSH_HOME_URL, '",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "', $logo, '",
+			"width": 30,
+			"height": 30
+		},
+		"sameAs": [
+			"http://www.hiroshima-jiko.com",
+			"http://www.hiroshima-rikon.com",
+			"http://www.hiroshima-sozoku.com",
+			"http://www.hiroshima-saimu.com",
+			"http://www.hiroshima-keiji.com",
+			"http://www.hiroshima-fudosan.com",
+			"http://www.hiroshima-kigyo.com",
+			"http://www.hiroshima-hasan.com",
+			"http://www.hiroshima-rosai.com",
+			"https://www.facebook.com/yamashitakolawoffice",
+			"https://plus.google.com/118124010942091667362?hl=ja",
+			"https://www.youtube.com/channel/UCQepvNppunUj6BSQgAtbx1g",
+			"http://mbp-hiroshima.com/law-yamashita"
+		]
+	},
+	"description": "', esc_js( $excerpt ), '"
+}
+</script>
+';
+	}
+	echo '
+<script type="application/ld+json">
+{
+	"@context": "http://schema.org",
+	"@type": "LocalBusiness",
+	"name": "', DTDSH_SITENAME, '",
+	"telephone": "0120-7834-09",
+	"email": "info@law-yamashita.com",
+	"openingHours": [
+		"Mo-Fr 09:00-19:00",
+		"Sa 10:00-17:00"
+	],
+	"url": "', DTDSH_HOME_URL, '",
+	"logo": "', $logo, '",
+	"sameAs": [
+		"http://www.hiroshima-jiko.com",
+		"http://www.hiroshima-rikon.com",
+		"http://www.hiroshima-sozoku.com",
+		"http://www.hiroshima-saimu.com",
+		"http://www.hiroshima-keiji.com",
+		"http://www.hiroshima-fudosan.com",
+		"http://www.hiroshima-kigyo.com",
+		"http://www.hiroshima-hasan.com",
+		"http://www.hiroshima-rosai.com",
+		"https://www.facebook.com/yamashitakolawoffice",
+		"https://plus.google.com/118124010942091667362?hl=ja",
+		"https://www.youtube.com/channel/UCQepvNppunUj6BSQgAtbx1g",
+		"http://mbp-hiroshima.com/law-yamashita"
+	]
+}
+</script>
+';
+});

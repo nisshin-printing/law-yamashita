@@ -85,6 +85,28 @@ function dtdsh_dynamic_navmenu( $global_nav = false ) {
 			'walker' => new Side_Nav_Walker_Nav_Menu()
 		) );
 	}
+	
+	// 解決事例
+	if ( is_post_type_archive( 'cases' ) || is_singular( 'cases' ) || is_tax( 'cases-cat' ) ) {
+		$taxonomy = 'cases-cat';
+		$args = array(
+			'taxonomy' => $taxonomy,
+			'orderby' => 'count',
+			'order' => 'DESC',
+			'hide_empty' => true,
+		);
+		$terms = get_terms( $args );
+		echo '<h5 class="nav-title">解決事例カテゴリー</h5>';
+		if ( count( $terms ) !== 0 ) {
+			echo '<ul class="submenu menu vertical" role="menu">';
+			foreach ( $terms as $term ) {
+				$term_link = get_term_link( $term, $taxonomy );
+				echo '<li role="menuitem"><a href="', $term_link, '" title="', $term->name, '" class="waves-effect">', $term->name, '</a></li>';
+			}
+			echo '</ul>';
+		}
+	}
+	
 	// All
 	echo '<h5 class="nav-title">取扱範囲一覧</h5>';
 	wp_nav_menu( array(

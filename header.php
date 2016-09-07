@@ -25,7 +25,11 @@ $head,
 	dtdsh_dynamic_inlining_style();
 	wp_head();
 echo '</head>
-<body id="PageTop" itemscope itemtype="http://schema.org/WebPage" ', body_class(), $on_load, '>',
+<body id="PageTop"';
+if ( ! is_singular() ) {
+	echo ' itemscope itemtype="http://schema.org/WebPage" ';
+}
+echo body_class(), $on_load, '>',
 google_tag_manager_install(),
 '<div class="off-canvas-wrapper">
 <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
