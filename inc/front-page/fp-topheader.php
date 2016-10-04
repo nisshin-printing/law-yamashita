@@ -3,6 +3,7 @@
 $slides_args = array(
 	'post_type' => 'dtdsh-slides',
 	'posts_per_page' => -1,
+	'post_status' => 'publish',
 	'orderby' => 'date',
 	'order' => 'ASC',
 	);

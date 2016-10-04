@@ -5,7 +5,6 @@ if ( is_front_page() || is_singular( 'dtdsh-lp' ) ) {
 } else {
 	$btn = '<span>メニュー</span>';
 }
-$on_load = ( is_page( 'access' ) ) ? ' onload="initialize();"' : '';
 $head = ( is_singular() ) ? '<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">' : '<html lang="ja" dir="ltr"><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">';
 $is_sticky = ( is_singular( 'dtdsh-lp' ) ) ? '' : ' id="sticky-topbar"';
 $master = '3464';
@@ -29,7 +28,7 @@ echo '</head>
 if ( ! is_singular() ) {
 	echo ' itemscope itemtype="http://schema.org/WebPage" ';
 }
-echo body_class(), $on_load, '>',
+echo body_class(), '>',
 google_tag_manager_install(),
 '<div class="off-canvas-wrapper">
 <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>

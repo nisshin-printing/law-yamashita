@@ -56,18 +56,16 @@ function dtdshtheme_scripts() {
 	wp_deregister_script( 'devicepx-jetpack' );
 	wp_dequeue_script( 'devicepx-jetpack' );
 
-	wp_register_script( 'theme-app', TJS . 'law-yamashita-app.min.js', array( 'jquery' ), NULL, true );
-	wp_register_script( 'theme-scripts', TJS . 'law-yamashita-theme.min.js', array( 'jquery', 'theme-app' ), NULL, true );
-	wp_register_script( 'google-map', '//maps.googleapis.com/maps/api/js?key=AIzaSyAN4kMQJOMnCR-Y0GR8QylbjAZiHLGm2UE', array(), NULL, true );
+	wp_register_script( 'theme-app', TJS . 'apps.min.js', array( 'jquery' ), NULL, true );
+	wp_register_script( 'google-map', '//maps.googleapis.com/maps/api/js?key=AIzaSyAN4kMQJOMnCR-Y0GR8QylbjAZiHLGm2UE', array(), NULL, false );
 
-	wp_enqueue_script( 'theme-app' );
-	wp_enqueue_script( 'theme-scripts' );
 	if ( is_page( '281' ) ) {
 		wp_enqueue_script( 'google-map' );
 	}
 	if ( function_exists( 'wpcf7_enqueue_scripts' ) && is_page( array( '1185', '1172', '1153', '1161', '1167', '1144', '1176', '2528', '1155', '1179', '3545' ) ) ) {
 		wpcf7_enqueue_scripts();
 	}
+	wp_enqueue_script( 'theme-app' );
 }
 add_action( 'wp_enqueue_scripts', 'dtdshtheme_scripts' );
 endif;

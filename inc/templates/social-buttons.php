@@ -1,5 +1,6 @@
 <?php
-$url_encode   = urlencode( get_permalink() );
+$changeUrlReal = substr( '.dev', '.com', get_permalink() );
+$url_encode   = urlencode( $changeUrlReal );
 $title_encode = urlencode( get_the_title() );
 ?>
 <div id="social-buttons" data-permalink="<?php echo $url_encode; ?>">
