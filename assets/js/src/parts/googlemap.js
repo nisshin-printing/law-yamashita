@@ -1,4 +1,3 @@
-require('//maps.googleapis.com/maps/api/js?key=AIzaSyAN4kMQJOMnCR-Y0GR8QylbjAZiHLGm2UE');
 {
 	if (document.getElementById('section-map')) {
 		let latlng1 = new google.maps.LatLng(34.399869, 132.4645053),

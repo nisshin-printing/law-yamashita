@@ -2,8 +2,8 @@ let foundation = require('../vendor/foundation.js');
 require('../vendor/jquery.sticky');
 (function($) {
 	'use strict';
-	let adminBar = document.getElementById('wpadminbar') ? $('#wpadminbar').height() : 0,
-		mainNav = document.getElementById('sticky-topbar') ? $('#sticky-topbar').height() : 0,
+	let adminBar = $('#wpadminbar')[0] ? $('#wpadminbar').height() : 0,
+		mainNav = $('#sticky-topbar')[0] ? $('#sticky-topbar').height() : 0,
 		headerHeight = parseInt(adminBar) + parseInt(mainNav);
 	
 	// Change default settings.

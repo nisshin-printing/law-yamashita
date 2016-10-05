@@ -6,7 +6,8 @@ function dtdsh_dynamic_navmenu( $global_nav = false ) {
 	$nav_tel_id = ( preg_match( '/dev/', $_SERVER['SERVER_NAME'] ) ) ? $staging_nav_tel : $master_nav_tel;
 	$is_column = ( ! $global_nav ) ? ' class="column"' : '';
 	// All
-	echo '<nav role="navigation"', $is_column, '>
+	echo '<aside', $is_column, ' data-sticky-container>
+		<nav role="navigation" class="sticky" data-sticky data-sticky-on="large" data-anchor="content-wrapper">
 		<form action="', DTDSH_HOME_URL, '" role="search" method="search">
 			<input type="search" name="s" placeholder="気になるキーワードを入力" required="required">
 			<button type="submit"><i class="fa fa-search"></i></button>
@@ -84,10 +85,8 @@ function dtdsh_dynamic_navmenu( $global_nav = false ) {
 			'items_wrap' => '<ul class="%2$s">%3$s</ul>',
 			'walker' => new Side_Nav_Walker_Nav_Menu()
 		) );
-	}
-	
-	// 解決事例
-	if ( is_post_type_archive( 'cases' ) || is_singular( 'cases' ) || is_tax( 'cases-cat' ) ) {
+	} elseif ( is_post_type_archive( 'cases' ) || is_singular( 'cases' ) || is_tax( 'cases-cat' ) ) {
+		// 解決事例
 		$taxonomy = 'cases-cat';
 		$args = array(
 			'taxonomy' => $taxonomy,
@@ -105,17 +104,17 @@ function dtdsh_dynamic_navmenu( $global_nav = false ) {
 			}
 			echo '</ul>';
 		}
+	} else {
+		// All
+		echo '<h5 class="nav-title">取扱範囲一覧</h5>';
+		wp_nav_menu( array(
+			'theme_location' => 'ringo-scopenav',
+			'container' => false,
+			'menu_class' => 'menu vertical',
+			'items_wrap' => '<ul class="%2$s">%3$s</ul>',
+			'walker' => new Side_Nav_Walker_Nav_Menu()
+		) );
 	}
-	
-	// All
-	echo '<h5 class="nav-title">取扱範囲一覧</h5>';
-	wp_nav_menu( array(
-		'theme_location' => 'ringo-scopenav',
-		'container' => false,
-		'menu_class' => 'menu vertical',
-		'items_wrap' => '<ul class="%2$s">%3$s</ul>',
-		'walker' => new Side_Nav_Walker_Nav_Menu()
-	) );
 	// メニュー統合条件分岐
 	if ( $global_nav ) {
 		echo '<div class="hide-for-large"><h5 class="nav-title">メニュー</h5>';
@@ -128,7 +127,7 @@ function dtdsh_dynamic_navmenu( $global_nav = false ) {
 		) );
 		echo '</div>';
 	}
-	echo '</nav>';
+	echo '</nav></aside>';
 }
 endif;
 if ( ! function_exists( 'dtdsh_footer' ) ) :
