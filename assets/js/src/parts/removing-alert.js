@@ -1,6 +1,6 @@
 ! function($) {
-	'use stirct';
-	if (document.querySelector('.wpcf7-form') !== 0) {
+	'use strict';
+	if (document.querySelector('.wpcf7-form')) {
 		$('input, textarea, select').on('keyup change', () => {
 			$(window).on('beforeunload', () => {
 				return '他のページヘ移動すると入力データはすべて破棄されます。';

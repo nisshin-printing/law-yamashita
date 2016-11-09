@@ -1,7 +1,7 @@
-let Isotope = require('isotope-layout'),
-	jQueryBridget = require('jquery-bridget');
 ! function($) {
 	if (document.getElementById('grid-members')) {
+		let Isotope = require('isotope-layout'),
+			jQueryBridget = require('jquery-bridget');
 		jQueryBridget('isotope', Isotope, $);
 		let container = $('#grid-members').isotope({
 			itemSelector: '.grid-item',

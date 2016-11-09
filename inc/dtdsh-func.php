@@ -70,9 +70,9 @@ function dtdsh_paging( $pages = '', $range = 4 ) {
 		}
 	}
 	if ( 1 != $pages ) {
-		echo '<div class="pagination">';
+		echo '<div class="pagination" id="js-infinity-nav">';
 		if ( $paged < $pages ) {
-			echo '<p><a href="' . get_pagenum_link( $paged + 1 ) . '" class="waves-effect" aria-label="' . ( $paged + 1 ) . '" title="次の' . $wp_query->post_count . '件を見る">次の' . $wp_query->post_count . '件を見る<i class="fa fa-angle-right"></i></a></p>';
+			echo '<p><a href="' . get_pagenum_link( $paged + 1 ) . '" class="waves-effect" id="js-infinity-next" aria-label="' . ( $paged + 1 ) . '" title="次の' . $wp_query->post_count . '件を見る">次の' . $wp_query->post_count . '件を見る<i class="fa fa-angle-right"></i></a></p>';
 		}
 		echo '<ul aria-label="Pagination" role="navigation">';
 		if ( $paged >= 2 ) {

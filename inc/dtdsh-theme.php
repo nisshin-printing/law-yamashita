@@ -65,6 +65,10 @@ function dtdshtheme_scripts() {
 		wpcf7_enqueue_scripts();
 	}
 	wp_enqueue_script( 'theme-app' );
+	wp_localize_script( 'theme-app', 'dtdsh_vars', array(
+		'homeurl' => DTDSH_HOME_URL,
+		'ajaxurl' => admin_url( 'admin-ajax.php' )
+	) );
 }
 add_action( 'wp_enqueue_scripts', 'dtdshtheme_scripts' );
 endif;

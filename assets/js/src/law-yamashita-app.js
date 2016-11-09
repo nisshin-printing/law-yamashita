@@ -22,3 +22,6 @@ import './parts/auto-input-kana';
 import './parts/calculate-rate';
 import './parts/countup';
 import './parts/removing-alert';
+
+// Archive
+import './parts/infinity-scroll';

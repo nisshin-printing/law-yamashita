@@ -15,7 +15,7 @@ gulp.task('svg', () => {
 				this.emit('end');
 			}
 		}))
-		.pipe($.svgmin())
+		.pipe($.imagemin())
 		.pipe($.svgstore({ inlineSvg: true }))
 		.pipe($.cheerio({
 			run: ($) => {
@@ -23,7 +23,7 @@ gulp.task('svg', () => {
 			},
 			parserOptions: { xmlMode: true }
 		}))
-		.pipe(gulp.dest(path.svg))
+		.pipe(gulp.dest(config.path.svg.dest))
 		.pipe($.browser.stream(config.path.svg.watch));
 });
 
@@ -40,6 +40,6 @@ gulp.task('svg2png', () => {
 			prefix: 'icons.svg.'
 		}))
 		.pipe($.imagemin())
-		.pipe(gulp.dest(path.svg))
+		.pipe(gulp.dest(config.path.svg.dest))
 		.pipe($.browser.stream(config.path.svg.watch));
 });

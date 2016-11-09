@@ -25,7 +25,8 @@ function casesCTA( $id ) {
 <section class="layout-<?php echo $class_layout; ?>">
 	<div class="row">
 		<?php
-			echo '<div class="column article-body">';
+			echo '<div class="column">',
+				'<div id="js-infinity-loads" class="article-body">';
 			if ( is_post_type_archive() && $paged < 2 ) {
 				get_template_part( 'inc/templates/archive-top' );
 			}
@@ -40,6 +41,7 @@ function casesCTA( $id ) {
 				endwhile; else:
 					get_template_part( 'inc/templates/no-content' );
 			endif;
+			echo '</div>';
 			if ( is_post_type_archive( 'cases' ) ) {
 				$contactForm = '1185';
 				echo casesCTA( $contactForm );

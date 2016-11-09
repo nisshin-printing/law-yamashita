@@ -20,7 +20,7 @@
 	<div class="column-1-3" style="background: #FFF url(<?php dtdsh_photon_img( '2328', 'src' ); ?>) no-repeat top; background-size: cover;"></div>
 </section>
 <section class="fp-wel">
-	<div class="row mt3 mb3">
+	<div class="row pt3 pb3">
 		<div class="column small-6 large-4"><img src="<?php dtdsh_photon_img( '4031', 'src' ); ?>" width="<?php dtdsh_photon_img( '4031', 'width' ); ?>" height="<?php dtdsh_photon_img( '4031', 'height' ); ?>" alt="副代表の写真"></div>
 		<div class="column small-6 large-8">
 			<div class="title-block">
