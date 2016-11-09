@@ -2,6 +2,10 @@
 	visibility: visible;
 	overflow-y: scroll !important;
 	height: 100% !important;
+	background-color: #FFF !important;
+	.close-button {
+		color: #222;
+	}
 	.grid-item {
 		transition: all $mediumDuration;
 		border: 3px solid transparent;

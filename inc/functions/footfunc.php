@@ -7,7 +7,8 @@ function dtdsh_dynamic_navmenu( $global_nav = false ) {
 	$is_column = ( ! $global_nav ) ? ' class="column"' : '';
 	// All
 	echo '<aside', $is_column, ' data-sticky-container>
-		<nav role="navigation" class="sticky" data-sticky data-sticky-on="large" data-anchor="content-wrapper">
+		<nav role="navigation" class="sticky" data-sticky>
+		<a href="', DTDSH_HOME_URL, 'scope" class="button l-sidenav_ctalink expanded waves-effect btn-contact" title="取扱範囲一覧を見る"><i class="fa fa-th-list fa-2x"></i><br>取扱範囲一覧</a>
 		<form action="', DTDSH_HOME_URL, '" role="search" method="search">
 			<input type="search" name="s" placeholder="気になるキーワードを入力" required="required">
 			<button type="submit"><i class="fa fa-search"></i></button>
@@ -15,7 +16,25 @@ function dtdsh_dynamic_navmenu( $global_nav = false ) {
 		<a href="', DTDSH_HOME_URL, 'contact" title="お問い合わせ" class="btn-call waves-effect"><img src="', dtdsh_photon_img( $nav_tel_id, 'src' ), '" alt="お問い合わせ" width="', dtdsh_photon_img( $nav_tel_id, 'width' ), '" height="', dtdsh_photon_img( $nav_tel_id, 'height' ), '"></a>
 		<a href="', DTDSH_HOME_URL, 'contact" class="button expanded waves-effect btn-contact" title="今すぐ無料の法律相談">メールでお問い合わせ</a>';
 
-	// 交通事故
+	/*
+	 * 交通事故
+	 */
+	// 取扱範囲
+	if ( is_page( '1256' ) ) :
+?>
+<h5 class="nav-title">このページの目次</h5>
+<ul class="menu vertical nav-page-scope" data-magellan>
+	<li><a href="#s-1">その示談ちょっと待って</a></li>
+	<li><a href="#s-2">交通事故を弁護士に相談するメリット</a></li>
+	<li><a href="#s-3">選ばれ続ける5ポイント</a></li>
+	<li><a href="#s-4">交通事故に強い弁護士</a></li>
+	<li><a href="#s-5">交通事故解決の流れ</a></li>
+	<li><a href="#s-6">依頼者の声</a></li>
+	<li><a href="#s-7">解決事例</a></li>
+	<li><a href="#s-8 ">特設専門サイト</a></li>
+</ul>
+<?php
+	endif;
 	if ( is_page( array( 'traffic-accident', 'rate-jiko', 'contact-jiko' ) ) || is_tax( 'cases-cat', 'traffic-acc' ) || is_tax( 'voice-cat', 'traffic-acc' ) || is_category( 'jiko' ) ) {
 		echo '<h5 class="nav-title">交通事故メニュー</h5>';
 		wp_nav_menu( array(
@@ -85,7 +104,7 @@ function dtdsh_dynamic_navmenu( $global_nav = false ) {
 			'items_wrap' => '<ul class="%2$s">%3$s</ul>',
 			'walker' => new Side_Nav_Walker_Nav_Menu()
 		) );
-	} elseif ( is_post_type_archive( 'cases' ) || is_singular( 'cases' ) || is_tax( 'cases-cat' ) ) {
+	} elseif ( is_post_type_archive( 'cases' ) || is_singular( 'cases' ) || is_tax( 'cases-category' ) || is_tax( 'cases-tag' ) ) {
 		// 解決事例
 		$taxonomy = 'cases-cat';
 		$args = array(

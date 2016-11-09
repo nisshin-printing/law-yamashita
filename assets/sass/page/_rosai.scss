@@ -35,17 +35,20 @@
 		td {
 			padding: 10px 10px 10px 20px;
 			overflow: hidden;
+			&.button {
+				display: table-cell;
+				width: 200px;
+				vertical-align: middle;
+				padding: 10px 10px 10px 0;
+				background: none;
+				border-radius: 0;
+				margin: 0;
+				border: 0;
+				box-shadow: none;
+			}
 		}
-		.button {
-			display: table-cell;
-			width: 106px;
-			vertical-align: middle;
-			padding: 10px 10px 10px 0;
-			background: none;
-			border-radius: 0;
-			margin: 0;
-			border: 0;
-			box-shadow: none;
+		a.button {
+			background-color: $rosai;
 		}
 	}
 	.arrow {

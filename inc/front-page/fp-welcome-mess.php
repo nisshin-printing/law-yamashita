@@ -1,7 +1,7 @@
 <section class="fp-wel column-3">
 	<div class="column-2-3">
 		<div class="title-block">
-			<h2 class="header-title">所長あいさつ</h2>
+			<h2 class="header-title">代表あいさつ</h2>
 		</div>
 		<div class="body-block">
 			<p>山下江法律事務所サイトへのご訪問ありがとうございます。</p>

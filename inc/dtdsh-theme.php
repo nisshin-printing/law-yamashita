@@ -45,12 +45,6 @@ add_action( 'wp_enqueue_scripts', 'dtdshtheme_styles' );
 endif;
 if ( ! function_exists( 'dtdshtheme_scripts' ) ) :
 function dtdshtheme_scripts() {
-	$vals = array(
-		'ajaxurl'    => urldecode( admin_url( 'admin-ajax.php' ) ),
-		'rin_nonces' => wp_create_nonce( 'rin_ajax_functions' )
-	);
-	// register the standard scripts.
-	wp_localize_script( 'theme-apps', 'rin_query', $vals );
 	wp_deregister_script( 'devicepx' );
 	wp_dequeue_script( 'devicepx' );
 	wp_deregister_script( 'devicepx-jetpack' );
@@ -69,6 +63,7 @@ function dtdshtheme_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'dtdshtheme_scripts' );
 endif;
+
 function google_tag_manager_install() {
 echo <<< EOT
 <!-- Google Tag Manager -->
@@ -82,12 +77,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 EOT;
 }
-// ======================================  セキュリティチェック  =============================================//
-function kyubi_security_check() {
-	if ( preg_match( '/dev/', $_SERVER['SERVER_NAME'] ) ) {
-		echo '<meta name="kyubi" content="169b9074c107701aa19ea36d31082aaca5137618">';
-	}
-}
+
 
 function dtdsh_favicons() {
 	$test = TIMG . 'test-favicon.ico';
@@ -147,3 +137,13 @@ function remove_url_version( $arg ) {
 apply_filters( 'style_loader_src', 'remove_url_version', 99 );
 apply_filters( 'script_loader_src', 'remove_url_version', 99 );
 endif;
+
+// page-404 をキャッシュさせる
+function remove_nocache_404() {
+	if ( is_404() ) {
+		header_remove( "Pragma" );
+		header_remove( "Cache-Control" );
+		header_remove( "Expires" );
+	}
+}
+add_action( 'wp', 'remove_nocache_404' );

@@ -9,6 +9,7 @@ window.jQuery = $;
  */
 // Global
 import './parts/svg';
+import './parts/scrolldepth';
 import './parts/foundation';
 import './parts/slick-slider';
 import './parts/page-transitions';

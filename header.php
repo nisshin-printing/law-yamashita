@@ -5,7 +5,7 @@ if ( is_front_page() || is_singular( 'dtdsh-lp' ) ) {
 } else {
 	$btn = '<span>メニュー</span>';
 }
-$head = ( is_singular() ) ? '<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">' : '<html lang="ja" dir="ltr"><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">';
+$head = ( is_singular() ) ? '<head prefix="og: http://ogp.me/ns fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">' : '<html lang="ja" dir="ltr"><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#">';
 $is_sticky = ( is_singular( 'dtdsh-lp' ) ) ? '' : ' id="sticky-topbar"';
 $master = '3464';
 $staging = '3585';

@@ -26,10 +26,13 @@ function casesCTA( $id ) {
 	<div class="row">
 		<?php
 			echo '<div class="column article-body">';
+			if ( is_post_type_archive() && $paged < 2 ) {
+				get_template_part( 'inc/templates/archive-top' );
+			}
 			if ( have_posts() ) : while( have_posts() ) : the_post();
 				if ( is_category( 'my-best-pro' ) ) {
 					get_template_part( 'inc/templates/content-mybestpro' );
-				} elseif ( is_post_type_archive() || is_tax() || is_singular( $post_types ) ) {
+				} elseif ( is_post_type_archive() || is_archive() || is_tax() || is_singular( $post_types ) ) {
 					get_template_part( 'inc/templates/content-custom-post-type' );
 				} else {
 					get_template_part( 'inc/templates/content' );

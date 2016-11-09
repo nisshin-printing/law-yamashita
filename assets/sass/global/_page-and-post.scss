@@ -7,6 +7,44 @@
 		@extend .mt0;
 	}
 }
+// ============================== Archive Header ============================================================================= //
+.l-archive_header {
+	position: relative;
+	padding: .5em .75em;
+	background-color: #F0F0F0 !important;
+	border-radius: 6px;
+	&::after {
+		position: absolute;
+		top: 100%;
+		left: 30px;
+		content: '';
+		width: 0;
+		height: 0;
+		border: 10px solid transparent;
+		border-top: 15px solid #F0F0F0;
+	}
+}
+// ============================== .l-archive_showpost ============================================================================= //
+.l-archive_showpost:not(:last-child) {
+	position: relative;
+	padding-bottom: 6rem;
+	@include breakpoint(large) {
+		padding-bottom: 10rem;
+	}
+	&::after {
+		content: '';
+		position: absolute;
+		bottom: 3rem;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 10%;
+		height: 5px;
+		background-color: #EEE;
+		@include breakpoint(large) {
+			bottom: 5rem;
+		}
+	}
+}
 // ============================== .post-meta ============================================================================= //
 .post-meta {
 	padding: 1rem;
