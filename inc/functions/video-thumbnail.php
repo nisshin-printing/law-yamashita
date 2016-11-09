@@ -125,7 +125,7 @@ function dtdsh_videoThumbnail_return( $url ) {
 	$randomstring = dtdsh_randstring(4);
 	$thumb = $tturi['thumb'];
 	$frame = $tturi['frame'];
-	$html = '<a class="c-video-reveal title="動画を再生する" data-open="' . $randomstring . '"><img src="' . $thumb . '" alt="Youtube動画のサムネイル画像"><i class="fa fa-play-circle-o"></i></a>
+	$html = '<div class="row"><div class="column medium-6 text-center"><a class="c-video-reveal title="動画を再生する" data-open="' . $randomstring . '"><img src="' . $thumb . '" alt="Youtube動画のサムネイル画像"><i class="fa fa-play-circle-o"></i></a></div>
 	<div class="reveal" id="' . $randomstring . '" data-reveal><div class="flex-video">' . $frame . '</div><button class="close-button" data-close type="button">&times;</button></div>';
 	return $html;
 }
@@ -139,9 +139,12 @@ function shortcode_videoThumbnail( $atts ) {
 		shortcode_atts(
 			array(
 				'url' => '',
+				'desc' => ''
 			),
 			$atts
 		)
 	);
-	return $html = dtdsh_videoThumbnail_return( $url );
+	$html = dtdsh_videoThumbnail_return( $url );
+	$html .= '<div class="column medium-6">' . $desc . '</div></div>';
+	return $html;
 }
