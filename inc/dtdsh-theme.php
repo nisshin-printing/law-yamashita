@@ -50,6 +50,11 @@ function dtdshtheme_scripts() {
 	wp_deregister_script( 'devicepx-jetpack' );
 	wp_dequeue_script( 'devicepx-jetpack' );
 
+	if ( ! is_admin() ) {
+		wp_deregister_script( 'jquery' );
+		wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js', array(), NULL, true );
+	}
+
 	wp_register_script( 'theme-app', TJS . 'apps.min.js', array( 'jquery' ), NULL, true );
 	wp_register_script( 'google-map', '//maps.googleapis.com/maps/api/js?key=AIzaSyAN4kMQJOMnCR-Y0GR8QylbjAZiHLGm2UE', array(), NULL, false );
 
@@ -129,7 +134,7 @@ endif;
 // 全部消せます！　そう、日進印刷ならね。
 if ( ! function_exists( 'remove_url_version' ) ) :
 function remove_url_version( $arg ) {
-	if ( strpos( $arg, 'ver=' ) ) {
+	if ( strpos( $arg, '?ver=' ) ) {
 		$arg = esc_url( remove_query_arg( 'ver', $arg ) );
 	}
 	return $arg;
