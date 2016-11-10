@@ -33,7 +33,7 @@ function casesCTA( $id ) {
 			if ( have_posts() ) : while( have_posts() ) : the_post();
 				if ( is_category( 'my-best-pro' ) ) {
 					get_template_part( 'inc/templates/content-mybestpro' );
-				} elseif ( is_post_type_archive() || is_archive() || is_tax() || is_singular( $post_types ) ) {
+				} elseif ( is_post_type_archive() || is_tax() || is_singular( $post_types ) ) {
 					get_template_part( 'inc/templates/content-custom-post-type' );
 				} else {
 					get_template_part( 'inc/templates/content' );
