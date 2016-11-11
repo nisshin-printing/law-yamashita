@@ -156,3 +156,47 @@ function remove_nocache_404() {
 	}
 }
 add_action( 'wp', 'remove_nocache_404' );
+
+/*
+ * WordPressが生成するタグを削除
+ * WordPressよ。<head>内を汚すな。
+ */
+//========================  WordPress ========================================================================//
+remove_action( 'wp_head', 'wp_generator' );
+remove_action( 'wp_head', 'rsd_link' );
+remove_action( 'wp_head', 'wlwmanifest_link' );
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles', 'print_emoji_styles', 10 );
+remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+remove_action( 'admin_print_styles', 'print_emoji_styles' );
+remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
+remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+
+//========================  Admin ========================================================================//
+// Wordpress update disappear
+if ( ! current_user_can( 'administrator' ) ) {
+	add_filter( 'pre_site_transient_update_core', create_function( '$a', 'return null;' ) );
+}
+// Wordpress admin bar disappear
+function wp_admin_bar_disappear() {
+	global $wp_admin_bar;
+	$wp_admin_bar -> remove_menu( 'wp-logo' );
+	$wp_admin_bar -> remove_menu( 'update' );
+	$wp_admin_bar -> remove_menu( 'comments' );
+}
+add_action( 'wp_before_admin_bar_render', 'wp_admin_bar_disappear' );
+// Admin page at Footer disappear
+function custom_admin_footer() {
+	echo '<div id="wpfooter" role="contentinfo"><p id="footer-left" class="alignleft"><span id="footer-thankyou">Ringo+ for Law-Yamashita</span></p><p id="footer-upgrade" class="alignright"><p id="footer-upgrade" class="alignright">' .apply_filters( 'update_footer', '' ).'</p><div class="clear"></div></div>';
+}
+add_filter( 'admin_footer_text', 'custom_admin_footer' );
+/*
+ * テストサイトの場合、canonical属性を削除し、本番環境URLを挿入
+ */
+if ( preg_match( '/dev/', $_SERVER['SERVER_NAME'] ) && ! is_admin() ) {
+	remove_action( 'wp_head', 'rel_canonical' );
+	add_action( 'wp_head', function() {
+		echo '<link rel="canonical" href="https://www.law-yamashita.com', $_SERVER['REQUEST_URI'], '">';
+	});
+}

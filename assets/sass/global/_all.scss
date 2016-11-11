@@ -1,7 +1,7 @@
 *, *::before, *::after { box-sizing: border-box; }
 // Font
 .font-noto {
-	font-family: $noto-font !important;
+	font-family: $main-font !important;
 }
 .font-bold {
 	font-weight: 500 !important;
@@ -125,7 +125,7 @@ h3.no-btn {
 	position: relative;
 	padding-right: 2.2em;
 	transition: $mediumDuration;
-	font-family: $noto-font;
+	font-family: $main-font;
 	&::after {
 		position: absolute;
 		right: 0.5em;

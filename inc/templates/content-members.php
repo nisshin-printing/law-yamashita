@@ -199,7 +199,6 @@ if ( is_page() ) {
 					</div>
 				</header>
 				<div class="entry"><?php the_content(); ?></div>
-				<?php get_template_part( 'inc/templates/social-buttons' ); ?>
 			</article>
 			<?php
 		}

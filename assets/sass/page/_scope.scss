@@ -16,7 +16,7 @@
 		@extend .valign;
 		@extend .t-shadow-1;
 		text-align: right !important;
-		font-family: $noto-font;
+		font-family: $main-font;
 		font-size: 2rem;
 		@include breakpoint( small only ) {
 			font-size: 1rem;
