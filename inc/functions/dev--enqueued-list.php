@@ -44,12 +44,12 @@ add_action( 'wp_print_scripts', 'dtdsh_style_queues', 9999 );
 function my_get_dependency( $dependency ) {
 	$dep = "";
 	if ( is_a( $dependency, "_WP_Dependency" ) ) {
-		$dep .= "$dependency->handle";
-		$dep .= " [" . implode( " ", $dependency->deps ) . "]";
-		$dep .= " '$dependency->src'";
-		$dep .= " '$dependency->ver'";
-		$dep .= " '$dependency->args'";
-		$dep .= " (" . implode( " ", $dependency->extra ) . ")";
+		$dep .= " handle: '$dependency->handle'";
+		$dep .= " deps: [" . implode( " ", $dependency->deps ) . "]";
+		$dep .= " src: '$dependency->src'";
+		$dep .= " ver: '$dependency->ver'";
+		$dep .= " args: '$dependency->args'";
+		$dep .= " extra: (" . implode( " ", $dependency->extra ) . ")";
 	}
 	return "$dep\n";
 }

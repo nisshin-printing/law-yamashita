@@ -30,6 +30,10 @@ function dtdsh_theme() {
 	require_once( INC . 'dtdsh-func.php' );
 	require_once( INC . 'dtdsh-ajax.php' );
 	require_once( INC . 'dtdsh-shortcode.php' );
+	/*
+	 * Debug
+	 */
+	// require_once( TFUNC . 'dev--enqueued-list.php' );
 	if ( is_admin() ) {
 		require_once( INC . 'admin-init.php' );
 	}
@@ -37,13 +41,23 @@ function dtdsh_theme() {
 add_action( 'after_setup_theme', 'dtdsh_theme' );
 endif;
 
-if ( ! function_exists( 'dtdshtheme_styles' ) ) :
+
+// JetPackは不要
+add_filter( 'jetpack_implode_frontend_css', '__return_false' );
+
+// Contact Form 7　のファイルは不要
+add_filter( 'wpcf7_load_js', '__return_false' );
+add_filter( 'wpcf7_load_css', '__return_false' );
 function dtdshtheme_styles() {
 	wp_deregister_style( 'jetpack_css-css' );
+	wp_register_style( 'theme-style', TCSS . 'style.css', array(), NULL, false );
+	wp_enqueue_style( 'theme-style' );
+	if ( function_exists( 'wpcf7_enqueue_styles' ) && is_page( array( '1185', '1172', '1153', '1161', '1167', '1144', '1176', '2528', '1155', '1179' ) ) ) {
+		wpcf7_enqueue_styles();
+	}
 }
 add_action( 'wp_enqueue_scripts', 'dtdshtheme_styles' );
-endif;
-if ( ! function_exists( 'dtdshtheme_scripts' ) ) :
+
 function dtdshtheme_scripts() {
 	wp_deregister_script( 'devicepx' );
 	wp_dequeue_script( 'devicepx' );
@@ -52,11 +66,13 @@ function dtdshtheme_scripts() {
 
 	if ( ! is_admin() ) {
 		wp_deregister_script( 'jquery' );
-		wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js', array(), NULL, true );
+		// wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js', array(), NULL, true );
+		wp_register_script( 'jquery', TJS . 'jquery-2.2.4.min.js', array(), NULL, true );
 	}
 
 	wp_register_script( 'theme-app', TJS . 'apps.min.js', array( 'jquery' ), NULL, true );
-	wp_register_script( 'google-map', '//maps.googleapis.com/maps/api/js?key=AIzaSyAN4kMQJOMnCR-Y0GR8QylbjAZiHLGm2UE', array(), NULL, false );
+	// wp_register_script( 'google-map', '//maps.googleapis.com/maps/api/js?key=AIzaSyAN4kMQJOMnCR-Y0GR8QylbjAZiHLGm2UE', array(), NULL, false );
+	wp_register_script( 'google-map', TJS . 'google-map.min.js', array(), NULL, false );
 
 	if ( is_page( '281' ) ) {
 		wp_enqueue_script( 'google-map' );
@@ -71,7 +87,6 @@ function dtdshtheme_scripts() {
 	) );
 }
 add_action( 'wp_enqueue_scripts', 'dtdshtheme_scripts' );
-endif;
 
 function google_tag_manager_install() {
 echo <<< EOT
@@ -104,13 +119,6 @@ function dtdsh_favicons() {
 }
 add_action( 'wp_head', 'dtdsh_favicons' );
 add_action(' admin_head', 'dtdsh_favicons' );
-
-// JetPackは不要
-add_filter( 'jetpack_implode_frontend_css', '__return_false' );
-
-// Contact Form 7　のファイルは不要
-add_filter( 'wpcf7_load_js', '__return_false' );
-add_filter( 'wpcf7_load_css', '__return_false' );
 
 // HTML_Format
 if ( ! function_exists( 'dtdsh_html_format' ) ) :
@@ -200,3 +208,61 @@ if ( preg_match( '/dev/', $_SERVER['SERVER_NAME'] ) && ! is_admin() ) {
 		echo '<link rel="canonical" href="https://www.law-yamashita.com', $_SERVER['REQUEST_URI'], '">';
 	});
 }
+
+/*
+ * DNSプリフェッチ
+ */
+function dtdsh_dns_prefetch() {
+	$urls = array(
+		/* Developement */
+		'dev.law-yamashita',
+		'7834-09.law-yamashita',
+
+		/* Jucer */
+		'juicer-201510231014-logserverstack-s3improvement-1ae9o7c4djwtf.s3-ap-northeast-1.amazonaws.com',
+		'kitchen.juicer.cc',
+
+		/* google */
+		'maps.googleapis.com',
+		'apis.google.com',
+		'ajax.googleapis.com',
+		'maps.gstatic.com',
+		'ssl.gstatic.com',
+		'csi.gstatic.com',
+		'fonts.gstatic.com',
+		's.ytimg.com',
+		'www.youtube.com',
+		'www.google.com',
+		'www.google-analytics.com',
+		'www.googleadservices.com',
+		'fonts.googleapis.com',
+		'www.google.co.jp',
+		'accounts.google.com',
+		'www.googletagmanager.com',
+		'yt3.ggpht.com',
+		'lh3.googleusercontent.com',
+		'lh4.googleusercontent.com',
+		'googleads.g.doubleclick.net',
+		'stats.g.doubleclick.net',
+
+		/* facebook */
+		'static.xx.fbcdn.net',
+		'scontent.xx.fbcdn.net',
+		'external.xx.fbcdn.net',
+		'www.facebook.com',
+		'staticxx.facebook.com',
+		'connect.facebook.net',
+		'graph.facebook.com',
+
+		/* MyBestPro */
+		'mbp-hiroshima.com',
+
+		// CDN
+		'cdn.jsdelivr.net',
+		'maxcdn.bootstrapcdn.com',
+	);
+	foreach ( $urls as $url ) {
+		printf( '<link rel="dns-prefetch" href="//%s">', esc_attr( $url ) );
+	}
+}
+add_action( 'wp_head', 'dtdsh_dns_prefetch', 0, 0 );

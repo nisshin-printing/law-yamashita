@@ -19,10 +19,8 @@ $head,
 <!--[if lt IE 9]>
 <script src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
-<script>', file_get_contents( TJS . 'prefetch-onload.min.js' ),'</script>';
-	dtdsh_dynamic_inlining_style();
-	wp_head();
+<![endif]-->';
+wp_head();
 echo '</head>
 <body id="PageTop"';
 if ( ! is_singular() ) {
