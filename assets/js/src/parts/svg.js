@@ -1,5 +1,5 @@
+import svg4everybody from '../vendor/svg4everybody';
 {
 	'use strict';
-	let svg4everybody = require('../vendor/svg4everybody');
 	svg4everybody();
 }

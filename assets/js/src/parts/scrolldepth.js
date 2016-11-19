@@ -1,4 +1,4 @@
-require('../vendor/jquery.scrolldepth');
+import '../vendor/jquery.scrolldepth';
 ! function($) {
 	$.scrollDepth();
 }(jQuery);

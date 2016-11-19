@@ -1,4 +1,4 @@
-require('../vendor/slick');
+import '../vendor/slick';
 ! function($) {
 	/*
 	 * トップスライダー
