@@ -35,6 +35,9 @@ function casesCTA( $id ) {
 					get_template_part( 'inc/templates/content-mybestpro' );
 				} elseif ( is_post_type_archive() || is_tax() || is_singular( $post_types ) ) {
 					get_template_part( 'inc/templates/content-custom-post-type' );
+				} elseif ( preg_match( '/\/scope\/succession/', $_SERVER['REQUEST_URI'], $match ) ) {
+					$url = THTML . 'scope/succession.html';
+					echo file_get_contents( $url );
 				} else {
 					get_template_part( 'inc/templates/content' );
 				}

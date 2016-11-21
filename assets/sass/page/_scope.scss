@@ -72,3 +72,27 @@
 		}
 	}
 }
+.l-contents {
+	background-color: $ghost;
+	padding: 2rem 1rem;
+}
+.l-contents_header {
+	position: relative;
+	span {
+		background-color: $jiko;
+		color: #FFF;
+		padding: 1rem 2rem;
+		left: -1rem;
+		position: relative;
+		@include breakpoint(medium) {
+			position: absolute;
+		}
+	}
+	h3 {
+		border-left: none;
+		padding-left: 0;
+		@include breakpoint(medium) {
+			padding-left: 140px;
+		}
+	}
+}

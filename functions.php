@@ -18,6 +18,7 @@ define( 'TAUDIO', TURI . 'assets' . DSEP . 'audio' . DSEP );
 define( 'TFRONT', INC . 'front-page' . DSEP );
 define( 'TADMIN', INC . 'admin' . DSEP );
 define( 'TFUNC', INC . 'functions' . DSEP );
+define( 'THTML', INC . 'html' . DSEP );
 //========================  Initialization ========================================================================//
 // include( TPATH . 'renewal.php' );
 if ( ! isset( $content_width ) ){

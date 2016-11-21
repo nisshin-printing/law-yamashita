@@ -1,22 +1,6 @@
 <?php
 dtdsh_header();
 while ( have_posts() ) : the_post();
-
-$args = array(
-	'posts_per_page' => -1,
-	'meta_key' => 'charge_lawyer',
-	'meta_value_num' => $post->ID,
-	'order' => 'ASC'
-);
-var_dump( $post->ID );
-$relate_posts = new WP_Query( $args );
-$return = '<div id="test">';
-foreach ( $relate_posts->posts as $relate_post ) :
-	$return .= '<a href="' . get_the_permalink( $relate_post->ID ) . '">' . get_the_title( $relate_post->ID ) . '</a>';
-endforeach; wp_reset_postdata();
-$return .= '</div>';
-echo $return;
-
 ?>
 <section class="layout-post post-members row mt2 article-body">
 	<div class="column">

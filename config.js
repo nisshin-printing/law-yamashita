@@ -6,6 +6,25 @@ module.exports = {
 	IS_PRODUCTION: false,
 	dist: 'public',
 	autoTest: false,
+	ejs: {
+		minify: {
+			collapseWhitespace: true,
+			conservativeCollapse: true,
+			decodeEntities: true,
+			html5: true,
+			minifyCSS: true,
+			minifyJS: true,
+			minifyURLs: false,
+			preserveLineBreaks: false,
+			preventAttributesEscaping: false,
+			quoteCharacter: "",
+			removeEmptyAttributes: true,
+			removeRedundantAttributes: true,
+			removeScriptTypeAttributes: true,
+			removeStyleLinkTypeAttributes: true
+		},
+		ejsOptions: {}
+	},
 	style: {
 		sass: {
 			errLogToConsole: true,
@@ -47,6 +66,11 @@ module.exports = {
 	path: {
 		php: {
 			watch: '**/*.php'
+		},
+		ejs: {
+			src: ['ejs/**/*.ejs', '!ejs/**/_*.ejs'],
+			watch: 'ejs/**/*',
+			dest: 'inc/html'
 		},
 		style: {
 			src: ['assets/sass/**/*.scss', '!assets/sass/**/_*.scss'],

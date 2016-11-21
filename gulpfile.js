@@ -14,6 +14,7 @@ let tasks = require('./gulp/load'),
  */
 gulp.task('watch', () => {
 	gulp.watch(config.path.php.watch, ['reload']);
+	gulp.watch(config.path.ejs.watch, ['html']);
 	gulp.watch(config.path.style.watch, ['style']);
 	gulp.watch(config.path.js.watch, ['preJs']);
 	gulp.watch(config.path.svg.watch, ['svg', 'svg2png']);
