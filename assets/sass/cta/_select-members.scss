@@ -29,5 +29,8 @@
 				background-color: $white;
 			}
 		}
+		@include breakpoint(large) {
+			text-align: center;
+		}
 	}
 }
