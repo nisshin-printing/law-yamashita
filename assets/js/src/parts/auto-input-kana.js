@@ -1,7 +1,7 @@
 ! function($) {
 	'use strict';
 	if (document.getElementById('user-name')) {
-		require('../vendor/jquery.autoKana');
+		import '../vendor/jquery.autoKana';
 		$.fn.autoKana('#user-name', '#user-name-kana', {
 			katakana: true
 		});

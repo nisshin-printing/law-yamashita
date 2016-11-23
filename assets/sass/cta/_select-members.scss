@@ -1,26 +1,33 @@
 .cta-select-members {
 	width: 100%;
-	height: 300px;
 	display: table;
-	a {
-		background: {
-			position: center left;
-			repeat: no-repeat;
-			size: contain;
-			attachment: scroll;
-			image: url( #{$imgfolder}cta/select-members.jpg );
-			color: $white;
-		}
-		text-decoration: none;
-		@extend .b-shadow-1;
-		@extend .text-right;
-		@extend .m0;
-		@extend .p1;
-		@extend .color-black;
-		@extend .t-shadow-1;
-		display: table-cell;
+	@include breakpoint(medium) {
 		height: 300px;
+	}
+	a {
+		@extend .b-shadow-1;
+		@extend .button;
+		margin: 0 auto;
+		padding: 1rem;
+		display: table-cell;
 		vertical-align: middle;
 		font-size: 1.5rem;
+		@include breakpoint(medium) {
+			background: {
+				position: bottom left;
+				repeat: no-repeat;
+				size: contain;
+				attachment: scroll;
+				image: url( #{$imgfolder}cta/select-members.jpg );
+				color: $white;
+			}
+			color: #000;
+			text-align: right;
+			height: 300px;
+			&:hover {
+				color: #000;
+				background-color: $white;
+			}
+		}
 	}
 }

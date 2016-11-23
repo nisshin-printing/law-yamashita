@@ -3,7 +3,7 @@
 	let href = window.location.href,
 		regexp = new RegExp(dtdsh_vars.homeurl + '[cases|voice|client|advice]', 'g');
 	if ( href.match(regexp) ) {
-		require('../vendor/infinitescroll');
+		import '../vendor/infinitescroll';
 		$('#js-infinity-loads').infinitescroll({
 			navSelector: '#js-infinity-nav',
 			nextSelector: '#js-infinity-next',

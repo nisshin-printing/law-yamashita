@@ -1,7 +1,7 @@
 ! function($) {
 	let ele = $('.js-countup');
-	require('../vendor/countup');
-	require('../vendor/appear');
+	import '../vendor/countup';
+	import '../vendor/appear';
 	if (!ele[0]) {
 		ele.each(function(i, _this) {
 			let start = _this.data('countup-start'),

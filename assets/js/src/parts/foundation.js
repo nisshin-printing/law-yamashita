@@ -1,5 +1,5 @@
-let foundation = require('../vendor/foundation.js');
-require('../vendor/jquery.sticky.js');
+import foundation from '../vendor/foundation.js';
+import '../vendor/jquery.sticky.js';
 ! function($) {
 	$(document).ready(function() {
 		'use strict';

@@ -9,9 +9,9 @@ ob_start();
 		<div class="column">
 			<?php get_template_part( 'inc/templates/content-members' ); ?>
 			<div class="section">
-				<h3>担当者がわからないまま相談するのは不安...</h3>
+				<h3>弁護士の人柄で選んでください！</h3>
 				<div class="cta-select-members">
-					<a href="<?php echo get_page_link( '1126' ); ?>" title="<?php echo get_the_title( '1126' ); ?>" class="waves-effect">ご希望の担当者に法律相談できます！</a>
+					<a href="<?php echo get_page_link( '1126' ); ?>" title="<?php echo get_the_title( '1126' ); ?>" class="waves-effect">ご希望の担当者に相談できます！</a>
 				</div>
 			</div>
 		</div>
