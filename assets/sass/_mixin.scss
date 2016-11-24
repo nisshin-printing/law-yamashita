@@ -376,20 +376,23 @@ $colorlist:
 
 @for $i from 0 through 10 {
 	// Borders
+	.b0 {
+		border: none !important;
+	}
 	.b#{$i} {
-		border: $i * 1px solid !important;
+		border: $i * 1px solid;
 	}
 	.bt#{$i} {
-		border-top: $i * 1px solid !important;
+		border-top: $i * 1px solid;
 	}
 	.br#{$i} {
-		border-right: $i * 1px solid !important;
+		border-right: $i * 1px solid;
 	}
 	.bb#{$i} {
-		border-bottom: $i * 1px solid !important;
+		border-bottom: $i * 1px solid;
 	}
 	.bl#{$i} {
-		border-left: $i * 1px solid !important;
+		border-left: $i * 1px solid;
 	}
 	// Whitespace
 	.m#{$i}-auto {

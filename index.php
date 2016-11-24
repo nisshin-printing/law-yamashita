@@ -35,8 +35,11 @@ function casesCTA( $id ) {
 					get_template_part( 'inc/templates/content-mybestpro' );
 				} elseif ( is_post_type_archive() || is_tax() || is_singular( $post_types ) ) {
 					get_template_part( 'inc/templates/content-custom-post-type' );
-				} elseif ( preg_match( '/\/scope\/succession/', $_SERVER['REQUEST_URI'], $match ) ) {
+				} elseif ( preg_match( '/\/scope\/succession/', $_SERVER['REQUEST_URI'], $match ) && preg_match( '/(dev|localhost)/', $_SERVER['SERVER_NAME'], $match ) ) {
 					$url = THTML . 'scope/succession.html';
+					echo file_get_contents( $url );
+				} elseif ( preg_match( '/\/scope\/after-support/', $_SERVER['REQUEST_URI'], $match ) && preg_match( '/(dev|localhost)/', $_SERVER['SERVER_NAME'], $match ) ) {
+					$url = THTML . 'scope/after-support.html';
 					echo file_get_contents( $url );
 				} else {
 					get_template_part( 'inc/templates/content' );
