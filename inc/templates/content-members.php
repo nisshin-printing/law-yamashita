@@ -108,7 +108,7 @@ if ( is_page() ) {
 		?>
 		<article <?php post_class( 'grid-item bg-mask-wrapper' ); ?>>
 			<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="bg-mask waves-effect"></a>
-			<div class="img-wrapper"><?php the_post_thumbnail(); ?></div>
+			<div class="img-wrapper m0-auto"><?php the_post_thumbnail(); ?></div>
 			<h2>
 				<?php
 				if(get_post_meta($post->ID, 'subtitle', true)) {
@@ -130,7 +130,7 @@ if ( is_page() ) {
 	?>
 	<article>
 		<header class="row">
-			<div class="large-4 columns img-wrapper text-center"><?php the_post_thumbnail('full'); ?></div>
+			<div class="large-4 columns img-wrapper m0-auto"><?php the_post_thumbnail('full'); ?></div>
 			<div class="large-8 columns members-header text-center">
 				<p class="meta-job"><?php echo $job = (get_post_meta ( $post->ID, 'subtitle', true ) ) ? get_post_meta ( $post->ID, 'subtitle', true )  : '' ?></span></p>
 				<h1><?php the_title(); ?></h1>
