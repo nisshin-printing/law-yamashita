@@ -38,9 +38,6 @@ function casesCTA( $id ) {
 				} elseif ( preg_match( '/\/scope\/succession/', $_SERVER['REQUEST_URI'], $match ) && preg_match( '/(dev|localhost)/', $_SERVER['SERVER_NAME'], $match ) ) {
 					$url = THTML . 'scope/succession.html';
 					echo file_get_contents( $url );
-				} elseif ( preg_match( '/\/scope\/after-support/', $_SERVER['REQUEST_URI'], $match ) && preg_match( '/(dev|localhost)/', $_SERVER['SERVER_NAME'], $match ) ) {
-					$url = THTML . 'scope/after-support.html';
-					echo file_get_contents( $url );
 				} else {
 					get_template_part( 'inc/templates/content' );
 				}

@@ -187,7 +187,9 @@ function memberSelect() {
 	return $result;
 }
 
-// 離婚ページに女性弁護士リンクを挿入するためだけのショートコード
+/*
+ * 離婚ページに女性弁護士リンクを挿入するためだけのショートコード
+ */
 add_shortcode( 'link-women', 'cta_women_post_link' );
 function cta_women_post_link() {
 	$posts = array( '555', '560', '562' );
@@ -206,7 +208,9 @@ function cta_women_post_link() {
 	$result .= '<p><a href="' . get_page_link( '125' ) . '" class="button expanded waves-effect" title="' . get_the_title( '125' ) . '">' . get_the_title( '125' ) . 'の一覧</a></p>';
 	return $result;
 }
-// 相続関連ページにアドバイザーリンクを挿入するためだけのショートコード
+/*
+ * 相続関連ページにアドバイザーリンクを挿入するためだけのショートコード
+ */
 if ( ! function_exists( 'cta_adviser_post_link' ) ) :
 function cta_adviser_post_link() {
 	$posts = array( '2370', '2378' );
@@ -226,6 +230,29 @@ function cta_adviser_post_link() {
 	return $result;
 }
 add_shortcode( 'link-adviser', 'cta_adviser_post_link' );
+endif;
+/*
+ * 離婚後の生活設計ページ
+ */
+if ( ! function_exists( 'cta_aftersupport_link' ) ) :
+function cta_aftersupport_link() {
+	$posts = array( '2370', '3684' );
+	$result = '<h2>私たちが離婚後の生活をサポートします</h2>';
+	$result .= '<div id="cta-member-carousel">';
+	foreach ( $posts as $post ) {
+		$result .= '<div class="slide-item bg-mask-wrapper">';
+		$result .= '<a href="' . get_permalink( $post ) . '" title="' . get_the_title( $post ) . '" class="waves-effect bg-mask"></a>';
+		$img_id = get_post_thumbnail_id( $post );
+		$img_url = wp_get_attachment_image_src( $img_id, 'full', true );
+		$result .= '<div class="img-wrapper"><img data-lazy="' . $img_url[0] . '" alt="' . get_the_title() . '" width="' . $img_url[1] . '" height="' . $img_url[2] . '"></div>';
+		$result .= '<div class="meta-name"><span class="meta-works">' .get_post_meta( $post, 'subtitle', true ) . '</span>' . get_the_title( $post ) . '</div>';
+		$result .= '</div>';
+	}
+	$result .= '</div>';
+	$result .= '<p><a href="' . get_page_link( '125' ) . '" class="button expanded secondary waves-effect" title="' . get_the_title( '125' ) . '">メンバーの一覧</a></p>';
+	return $result;
+}
+add_shortcode( 'link-supporter', 'cta_aftersupport_link' );
 endif;
 include( 'shortcodes/seminar.php' );
 include( 'shortcodes/sozoku-form.php' );
