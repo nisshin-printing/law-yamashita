@@ -123,6 +123,25 @@ function dtdsh_dynamic_navmenu( $global_nav = false ) {
 			}
 			echo '</ul>';
 		}
+	} elseif ( is_post_type_archive( 'voice' ) || is_singular( 'voice' ) || is_tax( 'client-category' ) || is_tax( 'client-tag' ) ) {
+		// お客様の声
+		$taxonomy = 'voice-cat';
+		$args = array(
+			'taxonomy' => $taxonomy,
+			'orderby' => 'count',
+			'order' => 'DESC',
+			'hide_empty' => true,
+		);
+		$terms = get_terms( $args );
+		echo '<h5 class="nav-title">お客様の声カテゴリー</h5>';
+		if ( count( $terms ) !== 0 ) {
+			echo '<ul class="submenu menu vertical" role="menu">';
+			foreach ( $terms as $term ) {
+				$term_link = get_term_link( $term, $taxonomy );
+				echo '<li role="menuitem"><a href="', $term_link, '" title="', $term->name, '" class="waves-effect">', $term->name, '</a></li>';
+			}
+			echo '</ul>';
+		}
 	} else {
 		// All
 		echo '<h5 class="nav-title">取扱範囲一覧</h5>';

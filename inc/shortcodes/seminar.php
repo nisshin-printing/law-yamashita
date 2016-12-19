@@ -143,6 +143,15 @@ function show_seminar_lists() {
 			'resume'    => '17-resume.pdf',
 			'audio'     => '17-audio.mp3',
 		),
+		array(
+			'num'       => '18',
+			'time'      => '2016年11月24日',
+			'title'     => '契約書の作法 - 取引先から苦笑いされないために',
+			'lawyer'    => '加藤泰',
+			'lawyer_id' => '554',
+			'resume'    => '18-resume.pdf',
+			'audio'     => '18-audio.mp3',
+		),
 	);
 	$seminar_array = array_reverse( $seminar_array );
 	$html = '';
@@ -164,12 +173,12 @@ function show_seminar_lists() {
 			$html .= '<p class="lawyer">講　師：　' . $seminar["lawyer"] . '</p>';
 		}
 		$html .= '<div class="button-group text-left">';
-		$html .= '<a href="http://www.law-yamashita.com/downloads/seminar/' . $seminar["resume"] . '" class="waves-effect button" title="' . $seminar["title"] . '-' . $seminar["lawyer"] . '" target="_blank">セミナー資料</a>';
+		$html .= '<a href="https://www.law-yamashita.com/downloads/seminar/' . $seminar["resume"] . '" class="waves-effect button" title="' . $seminar["title"] . '-' . $seminar["lawyer"] . '" target="_blank">セミナー資料</a>';
 		if ( ! empty( $seminar["document"] ) ) {
-			$html .= '<a href="http://www.law-yamashita.com/downloads/seminar/' . $seminar["document"] . '" class="waves-effect button" title="' . $seminar["title"] . '-' . $seminar["lawyer"] . '" target="_blank">資料集</a>';
+			$html .= '<a href="https://www.law-yamashita.com/downloads/seminar/' . $seminar["document"] . '" class="waves-effect button" title="' . $seminar["title"] . '-' . $seminar["lawyer"] . '" target="_blank">資料集</a>';
 		}
 		if ( ! empty( $seminar["comment"] ) ) {
-			$html .= '<a href="http://www.law-yamashita.com/downloads/seminar/' . $seminar["comment"] . '" class="waves-effect button" title="' . $seminar["title"] . '-' . $seminar["lawyer"] . '" target="_blank">基本契約書（見本）におけるコメント</a>';
+			$html .= '<a href="https://www.law-yamashita.com/downloads/seminar/' . $seminar["comment"] . '" class="waves-effect button" title="' . $seminar["title"] . '-' . $seminar["lawyer"] . '" target="_blank">基本契約書（見本）におけるコメント</a>';
 		}
 		$html .= '</div>';
 		if ( ! empty( $seminar["audio"] ) ) {

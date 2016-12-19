@@ -118,7 +118,7 @@ function show_feeling_voice() {
 // 希望弁護士の選択モーダルを表示させたい
 add_action( 'wpcf7_init', 'On_wpcf7_add_shortcode' );
 function On_wpcf7_add_shortcode() {
-	wpcf7_add_shortcode( 'select_members', 'memberSelect', true );
+	wpcf7_add_form_tag( 'select_members', 'memberSelect', true );
 }
 function memberSelect() {
 	$args1 = array(

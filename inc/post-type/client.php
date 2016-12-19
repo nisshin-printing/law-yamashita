@@ -2,19 +2,19 @@
 
 if ( ! defined( 'ABSPATH' ) )exit;
 $labels = array(
-	'name' 					=> _x( '依頼者様の声','ringo' ),
-	'singular_name' 		=> _x( '依頼者様の声','ringo' ),
+	'name' 					=> _x( 'お客様の声','ringo' ),
+	'singular_name' 		=> _x( 'お客様の声','ringo' ),
 	'add_new' 				=> _x( '新規追加','ringo' ),
-	'add_new_item' 			=> _x( '新しい依頼者様の声を追加','ringo' ),
-	'edit_item' 			=> _x( '依頼者様の声を編集','ringo' ),
-	'new_item' 				=> _x( '新しい依頼者様の声','ringo' ),
-	'all_items' 			=> _x( '依頼者様の声','ringo' ),
-	'view_item' 			=> _x( '依頼者様の声を見る','ringo' ),
-	'search_items' 			=> _x( '依頼者様の声を検索','ringo' ),
-	'not_found' 			=> _x( '依頼者様の声が見つかりません','ringo' ),
-	'not_found_in_trash' 	=> _x( 'ゴミ箱に依頼者様の声はありません','ringo' ),
+	'add_new_item' 			=> _x( '新しいお客様の声を追加','ringo' ),
+	'edit_item' 			=> _x( 'お客様の声を編集','ringo' ),
+	'new_item' 				=> _x( '新しいお客様の声','ringo' ),
+	'all_items' 			=> _x( 'お客様の声','ringo' ),
+	'view_item' 			=> _x( 'お客様の声を見る','ringo' ),
+	'search_items' 			=> _x( 'お客様の声を検索','ringo' ),
+	'not_found' 			=> _x( 'お客様の声が見つかりません','ringo' ),
+	'not_found_in_trash' 	=> _x( 'ゴミ箱にお客様の声はありません','ringo' ),
 	'parent_item_colon' 	=> _x( '親アイテム','ringo' ),
-	'menu_name' 			=> _x( '依頼者様の声','ringo' ),
+	'menu_name' 			=> _x( 'お客様の声','ringo' ),
 );
 register_post_type( 'voice', array(
 	'labels' 				=> $labels,
@@ -25,7 +25,7 @@ register_post_type( 'voice', array(
 	'show_in_menu'          => 'edit.php',
 	'show_in_nav_menus' 	=> true,
 	'query_var' 			=> true,
-	'rewrite' 				=> array( 'slug' => 'client' ),
+	'rewrite' 				=> array( 'slug' => 'voice' ),
 	'capability_type' 		=> 'post',
 	'has_archive' 			=> true,
 	'hierarchical' 			=> true,
@@ -36,27 +36,27 @@ register_taxonomy(
 	"voice-cat",
 	"voice",
 	array(
-		"label" => __( '依頼者カテゴリー', 'dtdsh' ),
+		"label" => __( 'お客様の声カテゴリー', 'dtdsh' ),
 		"hierarchical" => true,
 		"show_admin_column" => true,
-		'rewrite' => array( 'slug' => 'client-category' )
+		'rewrite' => array( 'slug' => 'voice-category' )
 	)
 );
 register_taxonomy(
 	"voice-tag",
 	"voice",
 	array(
-		"label" => __( '依頼者タグ', 'dtdsh' ),
+		"label" => __( 'お客様の声タグ', 'dtdsh' ),
 		"hierarchical" => false,
 		"show_admin_column" => true,
-		'rewrite' => array( 'slug' => 'client-tag' )
+		'rewrite' => array( 'slug' => 'voice-tag' )
 	)
 );
 
 // Custom field inputbox
-add_action('admin_menu', 'add_client_box' );
-add_action('save_post', 'save_client_box' );
-function save_client_box( $post_id ) {
+add_action('admin_menu', 'add_voice_box' );
+add_action('save_post', 'save_voice_box' );
+function save_voice_box( $post_id ) {
 	global $post;
 	$my_nonce = isset( $_POST['my_nonce'] ) ? $_POST['my_nonce'] : null;
 	if ( ! wp_verify_nonce( $my_nonce, wp_create_nonce( __FILE__ ) ) ) {
@@ -75,30 +75,30 @@ function save_client_box( $post_id ) {
 		update_post_meta( $post->ID, 'charge_lawyer', null );
 	}
 }
-function add_client_box() {
+function add_voice_box() {
 	add_meta_box(
-		'client-duration',
+		'voice-duration',
 		'解決事例メタ情報',
-		'client_add_duration',
+		'voice_add_duration',
 		'voice',
 		'normal',
 		'high'
 	);
 	add_meta_box(
-		'client-charge-lawyer',
+		'voice-charge-lawyer',
 		'担当弁護士',
-		'client_add_charge_lawyer',
+		'voice_add_charge_lawyer',
 		'voice',
 		'normal',
 		'high'
 	);
 }
 // HTML / PHP Code Field
-function client_add_duration() {
+function voice_add_duration() {
 	global $post;
 	wp_nonce_field( wp_create_nonce( __FILE__ ), 'my_nonce' );
 ?>
-<div id="client-duration">
+<div id="voice-duration">
 	<p>解決事例の管理番号を入力してください。</p>
 	<p><label>管理番号<br><input type="text" name="box_numbers" value="<?php echo get_post_meta( $post->ID, 'box_numbers', true ); ?>" placeholder="管理番号" style="width: 80%"></label></p>
 	<p>
@@ -114,12 +114,12 @@ function client_add_duration() {
 <?php
 }
 
-function client_add_charge_lawyer() {
+function voice_add_charge_lawyer() {
 	global $post;
 	wp_nonce_field( wp_create_nonce( __FILE__ ), 'my_nonce' );
 	$get_lawyer_check = get_post_meta( $post->ID, 'charge_lawyer', true );
 ?>
-<div id="client-charge-lawyer">
+<div id="voice-charge-lawyer">
 	<p>担当弁護士・アドバイザーを選択してください。</p>
 	<p>
 		<label>

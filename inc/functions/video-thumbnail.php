@@ -98,7 +98,7 @@ break;
 case 'youtube':
 $returninfo['thumb'] 	=  'http://img.youtube.com/vi/' . $vidno  . '/mqdefault.jpg';
 $returninfo['id'] 		=  $vidno;
-$returninfo['frame'] 	= '<' .  $ipart2  . ' width="600" height="250" src="https://www.youtube.com/embed/' . $vidno . '" framebordoer="0" allowfullscreen></' .  $ipart2  . '>';
+		$returninfo['frame'] 	= '<' .  $ipart2  . ' width="600" height="250" src="https://www.youtube.com/embed/' . $vidno . '?rel=0" framebordoer="0" allowfullscreen></' .  $ipart2  . '>';
 break;
 }
 // return the array for the video
