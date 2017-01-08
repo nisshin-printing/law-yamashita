@@ -39,6 +39,7 @@ function dtdsh_setup_theme() {
 	// load_theme_textdomain( 'dtdsh', TPATH . DESEP . 'languages' );
 	add_editor_style();
 	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'title-tag' );
 	add_theme_support( 'html5', array(
 		'search-form'
 	) );

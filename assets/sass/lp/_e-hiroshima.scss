@@ -1,8 +1,19 @@
 .postid-#{$E-hiroshima_id} {
 	.header-lp {
+		background-image: url(#{$imgfolder}lp/e-hiroshima/1.jpg);
+		background-position: center center;
+	}
+}
+.postid-#{$kure_id} {
+	.header-lp {
+		background-image: url(#{$imgfolder}lp/kure/1.jpg);
+		background-position: center center;
+	}
+}
+.postid-#{$E-hiroshima_id},
+.postid-#{$kure_id}, {
+	.header-lp {
 		background: {
-			image: url(#{$imgfolder}lp/e-hiroshima/1.jpg);
-			position: center center;
 			size: cover;
 			attachment: fixed;
 		}

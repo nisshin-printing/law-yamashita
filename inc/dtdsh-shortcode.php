@@ -192,7 +192,7 @@ function memberSelect() {
  */
 add_shortcode( 'link-women', 'cta_women_post_link' );
 function cta_women_post_link() {
-	$posts = array( '555', '560', '562' );
+	$posts = array( '560', '562', '4092', '4087' );
 	$result = '<h2>女性のための女性弁護士はこんな人です</h2>';
 	$result .= '<div id="cta-member-carousel">';
 	foreach ( $posts as $post ) {
@@ -236,8 +236,8 @@ endif;
  */
 if ( ! function_exists( 'cta_aftersupport_link' ) ) :
 function cta_aftersupport_link() {
-	$posts = array( '2370', '3684' );
-	$result = '<h2>私たちが離婚後の生活をサポートします</h2>';
+	$posts = array( '2370', '3810', '4105' );
+	$result = '<h2>私たちが離婚後の生活設計をサポートします</h2>';
 	$result .= '<div id="cta-member-carousel">';
 	foreach ( $posts as $post ) {
 		$result .= '<div class="slide-item bg-mask-wrapper">';

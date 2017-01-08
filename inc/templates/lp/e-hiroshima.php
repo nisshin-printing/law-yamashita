@@ -16,24 +16,6 @@
 		</div>
 	</div>
 	<div class="column-2 left">
-		<div class="column-image-2" style="background-image: url(<?php echo TIMG, 'lp/e-hiroshima/3.jpg'; ?>);"></div>
-		<div class="column-1-2">
-			<div class="c-table-cell">
-				<h3>安心して相談できる空間</h3>
-				<p>一時間程度の法律相談でも、知らないことや難しい用語がたくさん出てきて疲れてしまいます。気軽に、安心できる法律相談のために、安心感を与える照明やインテリア家具により、居心地の良い空間を演出しております。</p>
-			</div>
-		</div>
-	</div>
-	<div class="column-2">
-		<div class="column-image-2" style="background-image: url(<?php echo TIMG, 'lp/e-hiroshima/4.jpg'; ?>);"></div>
-		<div class="column-1-2">
-			<div class="c-table-cell">
-				<h3>キッズルーム完備</h3>
-				<p>山下江法律事務所では、キッズルームが完備されている相談室も利用可能です。周りの人を気にすることなく、集中して、お困りごとをご相談いただけます。</p>
-			</div>
-		</div>
-	</div>
-	<div class="column-2 left">
 		<div class="column-image-2" style="background-image: url(<?php echo TIMG, 'lp/e-hiroshima/6.jpg'; ?>);"></div>
 		<div class="column-1-2">
 			<div class="c-table-cell">
@@ -48,20 +30,20 @@
 		<div class="column-1-2">
 			<div class="c-table-cell">
 				<h3>駐車場完備</h3>
-				<p>5台まで、無料でご利用いただけます。（先着順）詳しくは<a href="#" class="link-external" title="東広島支部へのアクセス">東広島支部へのアクセス</a>をご覧ください。</p>
+				<p>サンスクエア地下に無料共有駐車場があり、33台停められます。</p>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="head-title-wrapper bg-midnight-city">
+<div id="access" class="head-title-wrapper bg-midnight-city">
 	<p class="text-center color-gainsboro">ACCESS</p>
 	<h2 class="text-center color-white">東広島支部へのアクセス</h2>
 </div>
 <div class="row">
 	<div class="article-body column">
-		<p><img src="http://www.law-yamashita.com/wp-content/uploads/2016/07/map-02.png" alt="広島駅南口からバスで山下江法律事務所までのアクセス方法①" width="860" height="614" class="aligncenter size-full wp-image-3709" /></p>
-		<p class="button-group"><a href="http://www.law-yamashita.com/downloads/access/map-01.pdf" class="button" target="_blank" title="印刷用PDFをダウンロード"><i class="fa fa-file-pdf-o mr1"></i>印刷用PDF</a><a class="button link-external" href="https://goo.gl/maps/2S5xs" title="Googleマップで見る" target="_blank" rel="nofollow">Googleマップで見る</a></p>
-		<p>〒733-0001　広島県広島市西区大芝一丁目19-20　A2ビル3階<br>TEL： 082-237-1611　FAX： 082-237-1622<br>営業時間：　9：00～17：00</p>
+		<p class="text-center"><img src="https://www.law-yamashita.com/wp-content/themes/law-yamashita/assets/img/access/map-higashi.png" alt="山下江法律事務所東広島支部までのアクセス方法"></p>
+		<p class="button-group"><a class="button link-external" href="https://www.google.com/maps/place/Sunsquare/@34.4277718,132.7403102,20.25z/data=!4m12!1m6!3m5!1s0x3550657c4028c6c3:0x1eaf7fc1e65e6880!2z5p2x5bqD5bO25biC56uL44K144Oz44K544Kv44Ko44Ki5YWQ56ul6Z2S5bCR5bm05Zuz5pu46aSo!8m2!3d34.427758!4d132.740465!3m4!1s0x0:0xdf90322e3d84df2d!8m2!3d34.4278349!4d132.7406151?hl=ja" title="Googleマップで見る" target="_blank" rel="nofollow">Googleマップで見る</a></p>
+		<p>〒739-0043　広島県東広島市西条西本町２８－６ サンスクエア東広島３－１<br>TEL： 082-423-1511　FAX： 082-423-1512<br>営業時間：　9：00～18：00</p>
 	</div>
 </div>
 <div class="head-title-wrapper bg-mystic">
@@ -69,28 +51,24 @@
 	<h2 class="text-center color-white">東広島支部長のご挨拶</h2>
 </div>
 <div class="row c-table pt2 pb2">
-	<div class="column medium-4 c-table-cell ver-middle">
-		<p class="video-thumbnail-wrapper"><?php echo dtdsh_videoThumbnail_return('https://www.youtube.com/watch?v=-rpmzqP8vek'); ?></p>
-	</div>
-	<div class="column medium-8 members-header text-center c-table-cell ver-middle">
-		<p class="meta-job"><?php echo get_post_meta( '548', 'subtitle', true ); ?></p>
-		<h3><?php echo get_the_title( '548' ); ?></h3>
-		<p class="meta-name"><?php echo get_post_meta( '548', 'name-rubi', true ); ?></p>
+	<div class="column  members-header text-center">
+		<p class="meta-job">東広島支部長　/　弁護士</p>
+		<h3>小林　幹大</h3>
+		<p class="meta-name">こばらし　みきひろ</p>
 	</div>
 </div>
-<div class="fp-wel column-3">
-	<div class="column-1-3" style="background: #FFF url(<?php dtdsh_photon_img( '2328', 'src' ); ?>) no-repeat top; background-size: cover;"></div>
-	<div class="column-2-3">
-		<div class="title-block">
-			<h3 class="header-title">代表あいさつ</h3>
-		</div>
-		<div class="body-block">
-			<p>山下江法律事務所サイトへのご訪問ありがとうございます。</p>
-			<p>お悩みやお困りごとがありましたら，お気軽に当事務所にご連絡ください。</p>
-			<p>トラブルに巻き込まれた場合，法律的にはどうなるのだろうというご質問に的確にお答えし，法律で保証された権利を依頼者様に寄り添いながら実現していきます。さらに，法律的には困難な場合でも，どのようにすれば依頼者様にとっての最善の道に向かうのかについて，依頼者様に寄り添い一緒に考え，闘います。</p>
-			<p>あなたは一人ではありません。</p>
-			<p>私たち弁護士・秘書があなたを全力で支えます。私たちはあなたの味方です。</p>
-			<p>一人で悩まず，まずは当事務所までご連絡ください。</p>
+<div class="fp-wel">
+	<div class="row pt3 pb3">
+		<div class="column medium-6 large-4 medium-push-6 large-push-8 text-center"><img src="<?php dtdsh_photon_img( '2905', 'src' ); ?>" width="<?php dtdsh_photon_img( '2905', 'width' ); ?>" height="<?php dtdsh_photon_img( '2905', 'height' ); ?>" alt="東広島支部長の写真" ></div>
+		<div class="column medium-6 large-8 medium-pull-6 large-pull-4">
+			<h2 class="header-title">東広島支部開設あいさつ</h2>
+			<div>
+				<p>この度、弁護士法人山下江法律事務所東広島支部を開設に伴い、支部長として東広島市で仕事をさせていただくこととなりました。</p>
+				<p>私自身、東広島の出身ですので、生まれ故郷に戻って仕事をすることができるということに、喜びとともに、期待に応えるべく身の引き締まる思いを抱いています。</p>
+				<p>これまでは、当事務所にご相談を考えておられた方も、広島市の本部へお越し頂かなくてはなりませんでしたが、これからは、本部と連携しつつ、支部独自の地域に根ざしたきめ細かいサービスを提供していけることと思います。</p>
+				<p>地域の皆様に貢献できる法律事務所を目指して引き続き努力する所存です。お困りごとがあれば、どうぞお気軽にご相談下さい。</p>
+				<p class="text-right"><a href="<?php echo get_the_permalink( '2904' ); ?>" class="button" title="小林幹大について">小林幹大について<i class="fa fa-angle-right ml1"></i></a></p>
+			</div>
 		</div>
 	</div>
 </div>
@@ -106,7 +84,6 @@
 		<p>また、料金のお支払いには、<span class="bg-line">「相手から支払われた金銭で精算する方法」</span>や<span class="bg-line">「分割払いにする方法」</span>など少しでも「一番身近な弁護士事務所」となれるよう努めています。</p>
 		<h3>ポイント2　-　広島で多数の解決実績があります。</h3>
 		<p>当弁護士事務所での解決実績は、平成23年～平成27年末の期間で以下の解決実績件数です。</p>
-		<div id="chart-bar"></div>
 		<table>
 			<tr>
 				<th>分野</th>
@@ -135,13 +112,13 @@
 			</tr>
 			<tr>
 				<td>刑事事件</td>
-				<td class="text-center">0件</td>
+				<td class="text-center">―</td>
 				<td class="text-center">539件</td>
 			</tr>
 			<tr>
 				<td>企業法務</td>
-				<td class="text-center">0件</td>
-				<td class="text-center">70件</td>
+				<td class="text-center">―</td>
+				<td class="text-center">顧問契約数　70社</td>
 			</tr>
 			<tr>
 				<td>会社の破産・整理</td>
@@ -155,7 +132,7 @@
 		<h4>気軽にご相談いただくために、柔軟な相談時間でお待ちしております。</h4>
 		<p>お勤めの方、お忙しい方でも、<span class="bg-line">お気軽に、無理なく</span>ご相談いただくために、<span class="bg-line">毎週月曜日は夜９時まで、土曜日は１０時から１７時まで</span>法律相談を実施しております。さらに、営業時間外でも対応可能な弁護士や相続アドバイザー・メンタルケア心理士&reg;がいれば、相談時間を設けることも可能です。</p>
 		<h4>どんな弁護士なんだろう...という不安を解消します。<br>無料の弁護士指名制度</h4>
-		<div class="cta-select-members"><a style="cursor: default;">ご希望の担当者に法律相談できます！</a></div>
+		<div class="cta-select-members"><a style="cursor: default;">相談したい弁護士を指名できます！</a></div>
 		<p>当弁護士事務所では、各弁護士・相続アドバイザーの顔写真や経歴などを公開しております。これは、客観的に能力や信頼性を評価していただきたいからです。そのために、各弁護士・相続アドバイザーの経歴や一言メッセージ・執筆コラムから事前に印象を見て、希望の弁護士を選ぶことができます。<br>もちろん、指名料は<span class="bg-lie">無料</span>（所長・山下江のみ一時間３万円の相談料）で受け付けております。</p>
 		<p>どの弁護士・相続アドバイザー・メンタルケア心理士&reg;・秘書も<span class="bg-line">「親切な相談」</span>を心がけ、<span class="bg-line">「適切な解決」</span>のために全力で尽くしていますので、<span class="bg-line">「安心できる」・「話しやすそう」・「迅速に解決してくれそう」</span>な弁護士・相続アドバイザー・メンタルケア心理士&reg;をご指名ください。</p>
 		<h4>ご事情に応じて柔軟に支払い方法のご提案ができます。</h4>

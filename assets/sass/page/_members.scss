@@ -17,16 +17,32 @@
 				}
 			}
 		}
+		.bg-mask {
+			z-index: 5;
+		}
 		.img-wrapper {
 			margin-bottom: 10px;
 			width: 210px;
 			height: 210px;
+			border-radius: 50%;
+			overflow: hidden;
+			.o-members-label {
+				position: absolute;
+				width: 100%;
+				padding: .5em;
+				top: 178px;
+				font-size: .8em;
+				color: #FFF;
+				box-shadow: 0 2px 5px rgba( #000, .4 );
+				z-index: 1;
+				background-color: $jiko;
+			}
 			img {
 				@include hacks;
 				transition: all $slowDuration;
 				width: 210px;
 				height: 210px;
-				border-radius: 210px;
+				border-radius: 50%;
 			}
 		}
 		h2 {

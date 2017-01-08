@@ -103,8 +103,8 @@ function mm_add_subtitle() {
 </label>
 </p>
 <p>
-<label>一言メッセージ<br>
-<input type="text" name="mem-excerpt" value="<?php echo esc_html( get_post_meta( $post->ID, 'mem-excerpt', true ) ); ?>" placeholder="一言メッセージを入力してください。" style="width: 80%">
+<label>ラベル<br>
+<input type="text" name="mem-label" value="<?php echo esc_html( get_post_meta( $post->ID, 'mem-label', true ) ); ?>" placeholder="ラベルを入力してください。" style="width: 80%">
 </label>
 </p>
 </div>
@@ -123,7 +123,7 @@ function save_subtitle_box( $post_id ) {
 	if ( 'members' == $_POST['post_type'] ) {
 		update_post_meta( $post->ID, 'subtitle', $_POST['subtitle'] );
 		update_post_meta( $post->ID, 'name-rubi', $_POST['name-rubi'] );
-		update_post_meta( $post->ID, 'mem-excerpt', $_POST['mem-excerpt'] );
+		update_post_meta( $post->ID, 'mem-label', $_POST['mem-label'] );
 	}
 }
 

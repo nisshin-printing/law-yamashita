@@ -13,8 +13,10 @@ while( have_posts() ) : the_post();
 		get_template_part( 'inc/templates/lp/sozoku' );
 	} elseif( '2918' == $post->ID ) {
 		get_template_part( 'inc/templates/lp/kabarai' );
-	} elseif ( '3674' == $post->ID ) {
+	} elseif ( '4136' == $post->ID ) {
 		get_template_part( 'inc/templates/lp/e-hiroshima' );
+	} elseif ( '4137' == $post->ID ) {
+		get_template_part( 'inc/templates/lp/kure' );
 	}
 ?>
 </div>

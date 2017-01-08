@@ -84,31 +84,17 @@ if ( is_page() ) {
 <div id="grid-members">
 	<div class="row">
 		<?php
-		$mental_master = '350';
-		$mental_staging = '334';
-		$mental_care = ( preg_match( '/dev/', $_SERVER['SERVER_NAME'] ) ) ? $mental_staging : $mental_master;
-		$members = array( '53', '54', $mental_care );
-		foreach ( $members as $term ) :
 			$mem_args = array(
 				'post_type'      => 'members',
 				'posts_per_page' => '-1',
-				'orderby'        => 'ID',
-				'order'          => 'ASC',
 				'post_status'    => 'publish',
-				'tax_query'      => array(
-					array(
-						'taxonomy' => 'members-cat',
-						'field'    => 'term_id',
-						'terms'    => $term
-					)
-				)
 			);
 			$loop = new WP_Query( $mem_args );
 			if($loop->have_posts()) : while($loop->have_posts()) : $loop->the_post();
 		?>
 		<article <?php post_class( 'grid-item bg-mask-wrapper' ); ?>>
 			<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="bg-mask waves-effect"></a>
-			<div class="img-wrapper m0-auto"><?php the_post_thumbnail(); ?></div>
+			<div class="img-wrapper m0-auto"><?php echo get_post_meta( $post->ID, 'mem-label', true ); the_post_thumbnail(); ?></div>
 			<h2>
 				<?php
 				if(get_post_meta($post->ID, 'subtitle', true)) {
@@ -121,7 +107,6 @@ if ( is_page() ) {
 		<?php
 			endwhile;
 			endif;
-			endforeach;
 		?>
 </div>
 </div>

@@ -15,7 +15,6 @@ function dtdsh_dynamic_navmenu( $global_nav = false ) {
 		</form>
 		<a href="', DTDSH_HOME_URL, 'contact" title="お問い合わせ" class="btn-call waves-effect"><img src="', dtdsh_photon_img( $nav_tel_id, 'src' ), '" alt="お問い合わせ" width="', dtdsh_photon_img( $nav_tel_id, 'width' ), '" height="', dtdsh_photon_img( $nav_tel_id, 'height' ), '"></a>
 		<a href="', DTDSH_HOME_URL, 'contact" class="button expanded waves-effect btn-contact" title="今すぐ無料の法律相談">メールでお問い合わせ</a>';
-
 	/*
 	 * 交通事故
 	 */
@@ -104,8 +103,21 @@ function dtdsh_dynamic_navmenu( $global_nav = false ) {
 			'items_wrap' => '<ul class="%2$s">%3$s</ul>',
 			'walker' => new Side_Nav_Walker_Nav_Menu()
 		) );
-	} elseif ( is_post_type_archive( 'cases' ) || is_singular( 'cases' ) || is_tax( 'cases-category' ) || is_tax( 'cases-tag' ) ) {
-		// 解決事例
+	} else {
+		// All
+		echo '<h5 class="nav-title">取扱範囲一覧</h5>';
+		wp_nav_menu( array(
+			'theme_location' => 'ringo-scopenav',
+			'container' => false,
+			'menu_class' => 'menu vertical',
+			'items_wrap' => '<ul class="%2$s">%3$s</ul>',
+			'walker' => new Side_Nav_Walker_Nav_Menu()
+		) );
+	}
+	/*
+	 * 解決事例カテゴリ
+	 */
+	if ( preg_match( '/\/cases/', $_SERVER['REQUEST_URI'] ) ) {
 		$taxonomy = 'cases-cat';
 		$args = array(
 			'taxonomy' => $taxonomy,
@@ -123,8 +135,10 @@ function dtdsh_dynamic_navmenu( $global_nav = false ) {
 			}
 			echo '</ul>';
 		}
-	} elseif ( is_post_type_archive( 'voice' ) || is_singular( 'voice' ) || is_tax( 'client-category' ) || is_tax( 'client-tag' ) ) {
-		// お客様の声
+	/*
+	 * お客様の声カテゴリ
+	 */
+	} elseif ( preg_match( '/\/voice/', $_SERVER['REQUEST_URI'] ) ) {
 		$taxonomy = 'voice-cat';
 		$args = array(
 			'taxonomy' => $taxonomy,
@@ -142,16 +156,6 @@ function dtdsh_dynamic_navmenu( $global_nav = false ) {
 			}
 			echo '</ul>';
 		}
-	} else {
-		// All
-		echo '<h5 class="nav-title">取扱範囲一覧</h5>';
-		wp_nav_menu( array(
-			'theme_location' => 'ringo-scopenav',
-			'container' => false,
-			'menu_class' => 'menu vertical',
-			'items_wrap' => '<ul class="%2$s">%3$s</ul>',
-			'walker' => new Side_Nav_Walker_Nav_Menu()
-		) );
 	}
 	// メニュー統合条件分岐
 	if ( $global_nav ) {
