@@ -26,6 +26,7 @@ function dtdsh_theme() {
 	require_once( TFUNC . 'footfunc.php' );
 	require_once( TFUNC . 'postpassfunc.php' );
 	require_once( TFUNC . 'video-thumbnail.php' );
+	require_once( TFUNC . 'rss-feed.php' );
 	include_once( INC . 'law-yamashita-login.php' );
 	require_once( INC . 'dtdsh-func.php' );
 	require_once( INC . 'dtdsh-ajax.php' );
@@ -71,8 +72,8 @@ function dtdshtheme_scripts() {
 	}
 
 	wp_register_script( 'theme-app', TJS . 'apps.min.js', array( 'jquery' ), NULL, true );
-	// wp_register_script( 'google-map', '//maps.googleapis.com/maps/api/js?key=AIzaSyAN4kMQJOMnCR-Y0GR8QylbjAZiHLGm2UE', array(), NULL, false );
-	wp_register_script( 'google-map', TJS . 'google-map.min.js', array(), NULL, false );
+	wp_register_script( 'google-map', '//maps.googleapis.com/maps/api/js?key=AIzaSyAN4kMQJOMnCR-Y0GR8QylbjAZiHLGm2UE', array(), NULL, false );
+	// wp_register_script( 'google-map', TJS . 'google-map.min.js', array(), NULL, false );
 
 	if ( is_page( '281' ) ) {
 		wp_enqueue_script( 'google-map' );

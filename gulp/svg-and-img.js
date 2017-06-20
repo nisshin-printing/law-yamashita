@@ -7,10 +7,10 @@ let gulp = require('gulp'),
 	config = require('../config'),
 	$ = require('./plugins');
 
-gulp.task('svg', () => {
+gulp.task('svg', function() {
 	return gulp.src(config.path.svg.src)
 		.pipe($.plumber({
-			errorHandler: (error) => {
+			errorHandler: function(error) {
 				console.log(error.messageFormatted);
 				this.emit('end');
 			}
@@ -18,7 +18,7 @@ gulp.task('svg', () => {
 		.pipe($.imagemin())
 		.pipe($.svgstore({ inlineSvg: true }))
 		.pipe($.cheerio({
-			run: ($) => {
+			run: function($) {
 				$('[fill]').removeAttr('fill');
 			},
 			parserOptions: { xmlMode: true }
@@ -27,10 +27,10 @@ gulp.task('svg', () => {
 		.pipe($.browser.stream(config.path.svg.watch));
 });
 
-gulp.task('svg2png', () => {
+gulp.task('svg2png', function() {
 	return gulp.src(config.path.svg.src)
 		.pipe($.plumber({
-			errorHandler: (error) => {
+			errorHandler: function(error) {
 				console.log(error.messageFormatted);
 				this.emit('end');
 			}

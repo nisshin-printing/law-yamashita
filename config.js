@@ -79,7 +79,7 @@ module.exports = {
 		},
 		svg: {
 			src: 'assets/svg/icon/*.svg',
-			watch: 'assets/svg/*',
+			watch: 'assets/svg/*.svg',
 			dest: 'assets/svg',
 		},
 		js: {

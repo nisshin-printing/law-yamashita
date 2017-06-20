@@ -54,7 +54,7 @@
 	<div class="column  members-header text-center">
 		<p class="meta-job">東広島支部長　/　弁護士</p>
 		<h3>小林　幹大</h3>
-		<p class="meta-name">こばらし　みきひろ</p>
+		<p class="meta-name">こばやし　みきひろ</p>
 	</div>
 </div>
 <div class="fp-wel">
@@ -112,13 +112,13 @@
 			</tr>
 			<tr>
 				<td>刑事事件</td>
-				<td class="text-center">―</td>
-				<td class="text-center">539件</td>
+				<td class="text-center">137件</td>
+				<td class="text-center">385件</td>
 			</tr>
 			<tr>
 				<td>企業法務</td>
-				<td class="text-center">―</td>
-				<td class="text-center">顧問契約数　70社</td>
+				<td class="text-center">426件</td>
+				<td class="text-center">259件</td>
 			</tr>
 			<tr>
 				<td>会社の破産・整理</td>
@@ -131,10 +131,6 @@
 		<h3>ポイント3　-　広島最大級の弁護士事務所だからご要望に柔軟な対応が可能です。</h3>
 		<h4>気軽にご相談いただくために、柔軟な相談時間でお待ちしております。</h4>
 		<p>お勤めの方、お忙しい方でも、<span class="bg-line">お気軽に、無理なく</span>ご相談いただくために、<span class="bg-line">毎週月曜日は夜９時まで、土曜日は１０時から１７時まで</span>法律相談を実施しております。さらに、営業時間外でも対応可能な弁護士や相続アドバイザー・メンタルケア心理士&reg;がいれば、相談時間を設けることも可能です。</p>
-		<h4>どんな弁護士なんだろう...という不安を解消します。<br>無料の弁護士指名制度</h4>
-		<div class="cta-select-members"><a style="cursor: default;">相談したい弁護士を指名できます！</a></div>
-		<p>当弁護士事務所では、各弁護士・相続アドバイザーの顔写真や経歴などを公開しております。これは、客観的に能力や信頼性を評価していただきたいからです。そのために、各弁護士・相続アドバイザーの経歴や一言メッセージ・執筆コラムから事前に印象を見て、希望の弁護士を選ぶことができます。<br>もちろん、指名料は<span class="bg-lie">無料</span>（所長・山下江のみ一時間３万円の相談料）で受け付けております。</p>
-		<p>どの弁護士・相続アドバイザー・メンタルケア心理士&reg;・秘書も<span class="bg-line">「親切な相談」</span>を心がけ、<span class="bg-line">「適切な解決」</span>のために全力で尽くしていますので、<span class="bg-line">「安心できる」・「話しやすそう」・「迅速に解決してくれそう」</span>な弁護士・相続アドバイザー・メンタルケア心理士&reg;をご指名ください。</p>
 		<h4>ご事情に応じて柔軟に支払い方法のご提案ができます。</h4>
 		<p><span class="bg-line">「相手方から支払われる金銭で精算する方法」</span>や<span class="bg-line">「分割払いでお支払いする方法」</span>、資金がない方などの条件を満たしている方には、<span class="bg-line">「法テラスの扶助制度を活用し、月々５,０００円の分割払いにする方法」</span>など、可能な限り柔軟にご対応いたします。これは、各弁護士・秘書などスタッフが<span class="bg-line">「親切な相談」「適切な解決」というモットーで普段から全力で努めている</span>からです。</p>
 	</div>

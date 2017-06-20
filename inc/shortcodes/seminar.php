@@ -152,6 +152,15 @@ function show_seminar_lists() {
 			'resume'    => '18-resume.pdf',
 			'audio'     => '18-audio.mp3',
 		),
+		array(
+			'num'       => '19',
+			'time'      => '2017年3月23日',
+			'title'     => '企業のための過労死、ハラスメント対策 - 「憂鬱でなければ、仕事じゃない」とも言うけれど',
+			'lawyer'    => '笠原輔',
+			'lawyer_id' => '553',
+			'resume'    => '19-resume.pdf',
+			'audio'     => '19-audio.mp3',
+		),
 	);
 	$seminar_array = array_reverse( $seminar_array );
 	$html = '';

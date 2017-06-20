@@ -333,6 +333,73 @@ $colorlist:
 	$kigyo,
 	$rosai
 ;
+@for $i from 0 through 10 {
+	// Borders
+	.b0 {
+		border: none !important;
+	}
+	.b#{$i} {
+		border: $i * 1px solid;
+	}
+	.bt#{$i} {
+		border-top: $i * 1px solid;
+	}
+	.br#{$i} {
+		border-right: $i * 1px solid;
+	}
+	.bb#{$i} {
+		border-bottom: $i * 1px solid;
+	}
+	.bl#{$i} {
+		border-left: $i * 1px solid;
+	}
+	// Whitespace
+	.m#{$i}-auto {
+		margin: $i * 1rem auto !important;
+}
+.m#{$i} {
+	margin: $i *1rem !important
+}
+.mt#{$i} {
+	margin-top: $i *1rem !important
+}
+.mr#{$i} {
+	margin-right: $i *1rem !important
+}
+.mb#{$i} {
+	margin-bottom: $i *1rem !important
+}
+.ml#{$i} {
+	margin-left: $i *1rem !important
+}
+.p#{$i} {
+	padding: $i *1rem !important
+}
+.pt#{$i} {
+	padding-top: $i *1rem !important
+}
+.pr#{$i} {
+	padding-right: $i *1rem !important
+}
+.pb#{$i} {
+	padding-bottom: $i *1rem !important
+}
+.pl#{$i} {
+	padding-left: $i *1rem !important
+}
+.fs-#{$i} {
+	font-size: $i * 1rem;
+}
+}
+.fs-1-half {
+	font-size: 1.5rem;
+}
+// Depth
+@for $i from 0 through 10 {
+	.depth-#{$i} {
+		z-index: $i * 100 !important
+	}
+}
 @each $color in $colorname {
 	$index_key: index( $colorname, $color);
 	.color-#{$color} {
@@ -371,74 +438,6 @@ $colorlist:
 			@extend .border-oil;
 			@extend .bb1;
 		}
-	}
-}
-
-@for $i from 0 through 10 {
-	// Borders
-	.b0 {
-		border: none !important;
-	}
-	.b#{$i} {
-		border: $i * 1px solid;
-	}
-	.bt#{$i} {
-		border-top: $i * 1px solid;
-	}
-	.br#{$i} {
-		border-right: $i * 1px solid;
-	}
-	.bb#{$i} {
-		border-bottom: $i * 1px solid;
-	}
-	.bl#{$i} {
-		border-left: $i * 1px solid;
-	}
-	// Whitespace
-	.m#{$i}-auto {
-		margin: $i * 1rem auto !important;
-	}
-	.m#{$i} {
-		margin: $i *1rem !important
-	}
-	.mt#{$i} {
-		margin-top: $i *1rem !important
-	}
-	.mr#{$i} {
-		margin-right: $i *1rem !important
-	}
-	.mb#{$i} {
-		margin-bottom: $i *1rem !important
-	}
-	.ml#{$i} {
-		margin-left: $i *1rem !important
-	}
-	.p#{$i} {
-		padding: $i *1rem !important
-	}
-	.pt#{$i} {
-		padding-top: $i *1rem !important
-	}
-	.pr#{$i} {
-		padding-right: $i *1rem !important
-	}
-	.pb#{$i} {
-		padding-bottom: $i *1rem !important
-	}
-	.pl#{$i} {
-		padding-left: $i *1rem !important
-	}
-	.fs-#{$i} {
-		font-size: $i * 1rem;
-	}
-}
-.fs-1-half {
-	font-size: 1.5rem;
-}
-// Depth
-@for $i from 0 through 10 {
-	.depth-#{$i} {
-		z-index: $i * 100 !important
 	}
 }
 

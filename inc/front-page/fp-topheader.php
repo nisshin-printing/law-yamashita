@@ -3,10 +3,8 @@
 $slides_args = array(
 	'post_type' => 'dtdsh-slides',
 	'posts_per_page' => -1,
-	'post_status' => 'publish',
-	'orderby' => 'date',
-	'order' => 'ASC',
-	);
+	'post_status' => 'publish'
+);
 $slider = new WP_Query( $slides_args );
 echo '<section class="fp-topheader">
 	<div class="row">
@@ -47,8 +45,8 @@ endif;
 			<p>相談件数12,000件以上。<small>※</small><br>選ぶなら広島最大級。<br>個人のお客様なら<strong style="background: yellow;" class="bg-line color-primary">相談無料。</strong></p>
 			<small>※　平成27年12月時点</small>
 			<p class="mt1 mb0"><a href="tel:0120783409" title="電話する" class="p1 waves-effect bg-white"><img src="<?php dtdsh_photon_img( '2284', 'src' ); ?>" alt="お問い合わせ" width="<?php dtdsh_photon_img( '2284', 'width' ); ?>" height="<?php dtdsh_photon_img( '2284', 'height' ); ?>"></a></p>
-			<p class="mt1 mb0"><a href="<?php echo DTDSH_HOME_URL, 'contact'; ?>" class="button hollow expanded waves-effect mb0" title="メールでお問い合わせ"><i class="fa fa-envelope mr1"></i>メールでお問い合わせ</a></p>
-			<p class="mt1 mb0"><a href="<?php echo DTDSH_HOME_URL, 'contact/buy-book'; ?>" class="button hollow expanded waves-effect mb0" title="「相続・遺言のポイント50」のご注文"><i class="fa fa-book mr1"></i>「相続・遺言のポイント50」のご注文</a></p>
+			<p class="mt1 mb0"><a href="<?php echo DTDSH_HOME_URL, 'contact'; ?>" class="button hollow expanded waves-effect mb0" title="メールで相談予約"><i class="fa fa-envelope mr1"></i>メールで相談予約</a></p>
+<p class="mt1 mb0 button-group" style="display:table;margin:0 auto;width:376px"><a href="<?php echo DTDSH_HOME_URL, 'lp/3674'; ?>" class="button hollow waves-effect mb0" title="東広島支部について" style="display:table-cell;width:50%;">東広島支部について</a><a href="<?php echo DTDSH_HOME_URL, 'lp/4137'; ?>" class="button hollow waves-effect mb0" title="呉支部について" style="display:table-cell;width:50%;">呉支部について</a></p>
 			<p class="mt1 mb0"><a href="<?php echo DTDSH_HOME_URL, 'seminar'; ?>" class="button hollow expanded waves-effect mb0" title="セミナーのご案内"><i class="fa fa-microphone mr1"></i>セミナーのご案内</a></p>
 		</div>
 	</div>

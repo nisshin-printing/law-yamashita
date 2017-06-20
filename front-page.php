@@ -1,7 +1,9 @@
 <?php
 dtdsh_header();
 ob_start();
+include( TFRONT . 'top--special-sites.php' );
 include( TFRONT . 'fp-topheader.php' );
+include( TFRONT . 'cta--recruit.php' );
 include( TFRONT . 'fp-news.php' );
 include( TFRONT . 'fp-scope.php' );
 include( TFRONT . 'fp-cta-link.php' );

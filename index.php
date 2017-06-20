@@ -38,6 +38,12 @@ function casesCTA( $id ) {
 				} elseif ( preg_match( '/\/scope\/succession\/flow/', $_SERVER['REQUEST_URI'], $match ) && preg_match( '/(dev|localhost)/', $_SERVER['SERVER_NAME'], $match ) ) {
 					$url = THTML . 'scope/succession--flow.html';
 					echo file_get_contents( $url );
+					} elseif ( preg_match( '/\/scope\/bankruptcy-and-rehabilitation/', $_SERVER['REQUEST_URI'], $match ) && preg_match( '/(dev|localhost)/', $_SERVER['SERVER_NAME'], $match ) ) {
+					$url = THTML . 'scope/bankrupt.html';
+					echo file_get_contents( $url );
+				} elseif ( preg_match( '/\/scope\/debts-and-overpaid-problem/', $_SERVER['REQUEST_URI'], $match ) && preg_match( '/(dev|localhost)/', $_SERVER['SERVER_NAME'], $match ) ) {
+					$url = THTML . 'scope/debts-and-overpaid-problem.html';
+					echo file_get_contents( $url );
 				} elseif ( preg_match( '/\/scope\/succession/', $_SERVER['REQUEST_URI'], $match ) && preg_match( '/(dev|localhost)/', $_SERVER['SERVER_NAME'], $match ) ) {
 					$url = THTML . 'scope/succession.html';
 					echo file_get_contents( $url );

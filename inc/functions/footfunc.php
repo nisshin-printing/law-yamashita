@@ -14,7 +14,7 @@ function dtdsh_dynamic_navmenu( $global_nav = false ) {
 			<button type="submit"><i class="fa fa-search"></i></button>
 		</form>
 		<a href="', DTDSH_HOME_URL, 'contact" title="お問い合わせ" class="btn-call waves-effect"><img src="', dtdsh_photon_img( $nav_tel_id, 'src' ), '" alt="お問い合わせ" width="', dtdsh_photon_img( $nav_tel_id, 'width' ), '" height="', dtdsh_photon_img( $nav_tel_id, 'height' ), '"></a>
-		<a href="', DTDSH_HOME_URL, 'contact" class="button expanded waves-effect btn-contact" title="今すぐ無料の法律相談">メールでお問い合わせ</a>';
+		<a href="', DTDSH_HOME_URL, 'contact" class="button expanded waves-effect btn-contact" title="今すぐ無料の法律相談">メールで相談予約</a>';
 	/*
 	 * 交通事故
 	 */

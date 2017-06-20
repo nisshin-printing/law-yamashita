@@ -16,10 +16,11 @@
 	if ( $user_ID && get_post_meta( $post->ID, 'box_numbers', true ) ) {
 		echo '<p class="meta-inbox"><i class="fa fa-inbox"></i>' . get_post_meta( $post->ID, 'box_numbers', true ) . '</p>';
 	}
+	$is_admin = ( 0 === $user_ID ) ? ' class="hide"' : '';
 	?>
 	<h1><?php the_title(); ?></h1>
 	<ul class="post-meta">
-		<li itemprop="datePublished" datetime="<?php the_time( 'c' ); ?>"><i class="fa fa-calendar"></i><?php the_time( 'Y年m月d日' ); ?><span class="count-text">（<?php echo human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) . '前'; ?>）</span></li>
+		<li itemprop="datePublished" datetime="<?php the_time( 'c' ); ?>"<?php echo $is_admin; ?>><i class="fa fa-calendar"></i><?php the_time( 'Y年m月d日' ); ?><span class="count-text">（<?php echo human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) . '前'; ?>）</span></li>
 		<?php
 		echo get_the_term_list( $post->ID, $cat, '<li><i class="fa fa-archive"></i>', ' / ', '</li>' );
 		echo get_the_term_list( $post->ID, $tag, '<li><i class="fa fa-tags"></i>', ' / ', '</li>' );
