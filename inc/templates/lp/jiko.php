@@ -4,8 +4,7 @@
 <header class="jiko-header">
 	<div class="row">
 		<div class="column">
-			<h1 class="jiko-header_title"><img src="<?php echo '//www.law-yamashita.com/wp-content/themes/law-yamashita/assets/img/lp/jiko/header-title.png'; ?>"
-				    alt="交通事故に遭ったら広島最大級の山下江法律事務所で無料の相談をしよう。"></h1>
+			<h1 class="jiko-header_title"><img src="<?php echo '//www.law-yamashita.com/wp-content/themes/law-yamashita/assets/img/lp/jiko/header-title.png'; ?>" alt="交通事故に遭ったら広島最大級の山下江法律事務所で無料の相談をしよう。"></h1>
 			<p class="text-right">※当事務所が解決した事件の一例です。</p>
 		</div>
 	</div>
@@ -17,7 +16,7 @@
 			    alt="広島最大級の山下江法律事務所なら交通事故の相談が無料！"></div>
 		<div class="column small-12 medium-9 large-8">
 			<h2 class="jiko-cta_title">交通事故に遭ったら、いち早く弁護士に相談しましょう。</h2>
-			<p class="jiko-cta_desc">交通事故の発生後、早い段階でご相談いただければ、交渉などをすべて弁護士が代理するので治療に専念できます。<br>また、適切な後遺障害を認定してもらえるよう通院についてのアドバイスもいたします。</p>
+			<p class="jiko-cta_desc">交通事故の発生後、早い段階でご相談・ご依頼いただければ、交渉などをすべて弁護士が代理するので治療に専念できます。<br>また、適切な後遺障害を認定してもらえるよう通院についてのアドバイスもいたします。</p>
 		</div>
 		<div class="column small-12 large-2 text-center"><a href="#contact" class="button large waves-effect">相談してみる</a></div>
 	</div>
@@ -48,7 +47,7 @@
 			</div>
 			<div class="jiko-up_wrap">
 				<h3 class="jiko-up_title">③裁判基準</h3>
-				<p class="jiko-up_desc">過去の交通事故に関する裁判の判例などを踏まえて、損害の内容ごとに基準が示されています。弁護士が介入すると示談交渉からこの基準で計算します。<br>弁護士報酬を差し引いても、お手元に残る賠償金が増える場合が多いですので、<span class="bg-line">「弁護士費用のお支払い」を考慮しても、弁護士に任せることをお勧め</span>します。</p>
+				<p class="jiko-up_desc">過去の交通事故に関する裁判の判例などを踏まえて、損害の内容ごとに基準が示されています。弁護士が介入すると示談交渉からこの基準で計算します。<br>弁護士報酬を差し引いても、賠償金が増える場合が多いので、<span class="bg-line">「弁護士費用のお支払い」を考慮しても、弁護士に任せることをお勧め</span>します。</p>
 			</div>
 		</div>
 		<div class="column small-12 large-6 text-center"><img src="<?php echo '//www.law-yamashita.com/wp-content/themes/law-yamashita/assets/img/lp/jiko/graph.png'; ?>" alt="弁護士介入による賠償金（慰謝料・給与損害・遺失利益など）が増加する一般的な例。"></div>
@@ -99,7 +98,7 @@
 	<div class="row align-middle">
 		<div class="column small-12 medium-9 large-10">
 			<h2 class="jiko-cta_title">交通事故に遭われたら<br><strong class="color-red font-2x">お早め</strong>に弁護士へご相談ください。</h2>
-			<p class="jiko-cta_desc">事故後早期の段階からご相談・ご依頼いただくと、弁護士が代わりに交渉などを行うことで治療に専念できるメリットがあります。<br>さらに、適切な後遺障害等級を認定してもらえるよう通院についてのアドバイス、必要な場合は医師宛の書面を作成したり、直接医師と面談し、後遺障害診断書の内容についての理解を求めたりすることができます。</p>
+			<p class="jiko-cta_desc">事故後早期の段階からご相談・ご依頼いただくと、弁護士が代わりに交渉などを行うことで治療に専念できるメリットがあります。<br>さらに、適切な後遺障害等級を認定してもらえるよう通院についてのアドバイスをしたり、必要な場合は医師宛の書面を作成したり、直接医師と面談し、後遺障害診断書の内容についての理解を求めたりすることができます。</p>
 		</div>
 		<div class="column small-12 medium-3 large-2 text-center"><img src="<?php echo '//www.law-yamashita.com/wp-content/themes/law-yamashita/assets/img/lp/jiko/soudan-free.png'; ?>"
 			    alt="交通事故に遭われたらお早めに弁護士へ無料の相談しましょう。"></div>
@@ -117,7 +116,7 @@
 			<div class="jiko-support_wrap bg-grafpaper">
 				<div class="jiko-support">
 					<h4 class="jiko-support_title">初期の費用負担をなくしました</h4>
-					<p class="jiko-support_desc">弁護士に頼むと多額の費用が必要なのでは？というご心配を解消すべく、相談料無料・着手金無料で交通事故問題の解決を依頼できます。</p>
+					<p class="jiko-support_desc">弁護士に頼むと多額の費用が必要なのでは？というご心配を解消すべく、相談料無料・着手金無料で交通事故の解決を依頼できます。</p>
 				</div>
 				<div class="jiko-support">
 					<h4 class="jiko-support_title">通院についてのアドバイス</h4>
@@ -133,7 +132,7 @@
 				</div>
 				<div class="jiko-support">
 					<h4 class="jiko-support_title">後遺障害認定のサポート</h4>
-					<p class="jiko-support_desc">適切な後遺障害等級を認定してもらうためには、一定水準以上の知識・経験が必要です。<br><span class="bg-line">準備が不十分であったために後遺障害等級を獲得できないといった事態を避けるため</span>、等級認定手続を経る前に、弁護士に一度相談されることをお勧めいたします。</p>
+					<p class="jiko-support_desc">適切な後遺障害等級を認定してもらうためには、一定水準以上の知識・経験が必要です。<br><span class="bg-line">準備が不十分であったために適切な後遺障害等級を獲得できないといった事態を避けるため</span>、等級認定手続を経る前に、弁護士に一度相談されることをお勧めいたします。</p>
 				</div>
 				<div class="jiko-support">
 					<h4 class="jiko-support_title">必要に応じて医師と直接面談</h4>
@@ -141,7 +140,7 @@
 				</div>
 				<div class="jiko-support">
 					<h4 class="jiko-support_title">すでに後遺障害認定結果が出てしまった方でも異議申立可能</h4>
-					<p class="jiko-support_desc">後遺障害認定結果が出てしまった方でも、それが適切ではない場合、認定結果の異議申立を求めることができます。<br>相応の準備が必要ですので、新たな後遺障害診断書を用意するなど万全の体制で臨みます。</p>
+					<p class="jiko-support_desc">後遺障害認定結果が出てしまった方でも、それが適切ではない場合、認定結果の見直し（異議申立）を求めることができます。<br>相応の準備が必要ですので、新たな後遺障害診断書を用意するなど万全の体制で臨みます。</p>
 				</div>
 				<div class="jiko-support">
 					<h4 class="jiko-support_title">適切な賠償金（慰謝料・休業損害・逸失利益など）の増額には「交渉」が不可欠</h4>
@@ -239,7 +238,12 @@
 		<div class="column small-12">
 			<h2 class="jiko-section_title">交通事故の無料相談</h2>
 			<div class="article-body">
-				<p>法律相談は、ご予約の上、当事務所までお越しいただくことになります。<br><strong style="color: #ff0000">メール・電話等でのご回答はいたしかねますので、あらかじめご了承ください。</strong></p>
+				<p>法律相談は、ご予約の上、当事務所までお越しいただくことになります。<br />
+ <strong><span style="color: #ff0000;">メールでのご回答はいたしかねますので、あらかじめご了承ください。</span></strong></p>
+<p><a id="a-tel-contact" class="button" href="https://www.law-yamashita.com/consultation-flow#sec-3" target="_blank" rel="noopener">電話での相談をご希望の方</a></p>
+<p>なお、お問い合わせ内容により、回答にお時間がかかる場合がございます。</p>
+<p><a class="button secondary" href="https://www.law-yamashita.com/rates#sec-12" target="_blank" rel="noopener">他事務所からの弁護士交替のご依頼などについて</a></p>
+<h2>当日や翌営業日ご希望の方、お急ぎの方へ</h2>
 				<h3>当日や翌営業日ご希望の方、お急ぎの方へ</h3>
 				<table>
 					<thead>
